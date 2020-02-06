@@ -3,7 +3,7 @@ import React from "react";
 const Main = (props) => {
   const {title, genre, releaseDate} = props;
   // eslint-disable-next-line react/prop-types
-  return (
+  return <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
         <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -37,11 +37,11 @@ const Main = (props) => {
             <h2 className="movie-card__title">{title}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{releaseData}</span>
+              <span className="movie-card__year">{releaseDate}</span>
             </p>
 
             <div className="movie-card__buttons">
-             <button className="btn btn--play movie-card__button" type="button">
+              <button className="btn btn--play movie-card__button" type="button">
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkhref="#play-s"/>
                 </svg>
@@ -298,7 +298,7 @@ const Main = (props) => {
         </div>
       </footer>
     </div>
-    );
+  </React.Fragment>;
 };
 
 export default Main;
