@@ -5,7 +5,7 @@ import App from "./components/app/app.jsx";
 const movieCard = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
-  releaseData: 2014,
+  releaseDate: 2014,
 };
 
 const moviesList = [
@@ -35,7 +35,7 @@ ReactDOM.render(
     <App
       title={movieCard.title}
       genre={movieCard.genre}
-      releaseData={movieCard.releaseDate}
+      releaseDate={movieCard.releaseDate}
       moviesList={moviesList}
     />,
     document.querySelector(`#root`)
