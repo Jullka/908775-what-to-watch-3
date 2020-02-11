@@ -12,7 +12,7 @@ const App = (props) => {
       genre={genre}
       releaseDate={releaseDate}
       moviesList={moviesList}
-      smallMovieCardTitleHandler={smallMovieCardTitleHandler}
+      onSmallMovieCardTitleClick={smallMovieCardTitleHandler}
     />
   );
 };
