@@ -25,6 +25,7 @@ it(`Should Main render correctly`, () => {
       genre={movieCard.genre}
       releaseDate={movieCard.releaseDate}
       moviesList={moviesList}
+      onSmallMovieCardTitleClick={() => {}}
     />)
     .toJSON();
 
