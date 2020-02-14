@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import MoviesList from '../movies-list/movies-list.jsx';
 
 const Main = (props) => {
-  const {title, genre, releaseDate, moviesList, onSmallMovieCardTitleClick} = props;
+  const {promoFilm, movies, onTitleClick, onCardMouseOver} = props;
   return <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -34,10 +35,10 @@ const Main = (props) => {
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{title}</h2>
+            <h2 className="movie-card__title">{promoFilm.title}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{releaseDate}</span>
+              <span className="movie-card__genre">{promoFilm.genre}</span>
+              <span className="movie-card__year">{promoFilm.releaseDate}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -96,18 +97,7 @@ const Main = (props) => {
           </li>
         </ul>
 
-        <div className="catalog__movies-list">
-          {moviesList.map((movie) =>
-            <article key={movie.split(` `).join(`_`)} className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt={movie} width="280" height="175"/>
-              </div>
-              <h3 onClick={onSmallMovieCardTitleClick} className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">{movie}</a>
-              </h3>
-            </article>
-          )}
-        </div>
+        <MoviesList movies={movies} onClick={onTitleClick} onMouseOver={onCardMouseOver}/>
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -132,11 +122,17 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  genre: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired,
-  moviesList: PropTypes.array,
-  onSmallMovieCardTitleClick: PropTypes.func
+  promoFilm: PropTypes.exact({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseDate: PropTypes.number.isRequired,
+  }),
+  movies: PropTypes.arrayOf(PropTypes.exact({
+    name: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired
+  })),
+  onTitleClick: PropTypes.func,
+  onCardMouseOver: PropTypes.func
 };
 
 export default Main;

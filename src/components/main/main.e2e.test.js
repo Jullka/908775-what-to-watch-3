@@ -3,13 +3,13 @@ import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main.jsx";
 
-const movieCard = {
+const promoFilm = {
   title: `Terminator 2: Judgment Day`,
   genre: `Thrillers`,
   releaseDate: 1991,
 };
 
-const moviesList = [
+const movies = [
   `The Green Mile`,
   `Deliverance`,
   `Mirrors`,
@@ -23,16 +23,14 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Should movie card title be click`, () => {
-  const onSmallMovieCardTitleClick = jest.fn();
+it(`Should movie card title be clicked`, () => {
+  const onTitleClick = jest.fn();
 
   const main = shallow(
       <Main
-        title={movieCard.title}
-        genre={movieCard.genre}
-        releaseDate={movieCard.releaseDate}
-        moviesList={moviesList}
-        onSmallMovieCardTitleClick={onSmallMovieCardTitleClick}
+        promoFilm={promoFilm}
+        movies={movies}
+        onTitleClick={onTitleClick}
       />
   );
 
@@ -43,5 +41,5 @@ it(`Should movie card title be click`, () => {
     title.props().onClick();
   });
 
-  expect(onSmallMovieCardTitleClick.mock.calls.length).toBe(titleCount);
+  expect(onTitleClick).toHaveBeenCalledTimes(titleCount);
 });

@@ -2,13 +2,13 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
 
-const movieCard = {
+const promoFilm = {
   title: `Terminator 2: Judgment Day`,
   genre: `Thrillers`,
-  releaseDate: 1991,
+  releaseDate: 1991
 };
 
-const moviesList = [
+const movies = [
   `The Green Mile`,
   `Deliverance`,
   `Mirrors`,
@@ -18,15 +18,13 @@ const moviesList = [
   `The Bank Job`
 ];
 
-it(`Should Main render correctly`, () => {
+it(`Main component renders correctly`, () => {
   const tree = renderer
-    .create(<Main
-      title={movieCard.title}
-      genre={movieCard.genre}
-      releaseDate={movieCard.releaseDate}
-      moviesList={moviesList}
-      onSmallMovieCardTitleClick={() => {}}
-    />)
+  .create(<Main
+    promoFilm={promoFilm}
+    movies={movies}
+    filmNameClickHandler={() => {}}
+  />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

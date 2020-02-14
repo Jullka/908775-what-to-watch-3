@@ -2,13 +2,13 @@ import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app.jsx";
 
-const movieCard = {
+const promoFilm = {
   title: `Terminator 2: Judgment Day`,
   genre: `Thrillers`,
   releaseDate: 1991,
 };
 
-const moviesList = [
+const movies = [
   `The Green Mile`,
   `Deliverance`,
   `Mirrors`,
@@ -21,10 +21,8 @@ const moviesList = [
 it(`Render App`, () => {
   const tree = renderer
     .create(<App
-      title={movieCard.title}
-      genre={movieCard.genre}
-      releaseDate={movieCard.releaseDate}
-      moviesList={moviesList}
+      promoFilm={promoFilm}
+      movies={movies}
     />)
     .toJSON();
 
