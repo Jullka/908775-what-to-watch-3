@@ -8,22 +8,24 @@ Enzyme.configure({
 });
 
 const movie = {
+  id: `011`,
   title: `War of the Worlds`,
   img: `img/war-of-the-worlds.jpg`
 };
 
-describe(`Should SmallMovieCard work correctly`, () => {
-  const handleCardOver = jest.fn();
+it(`Should movie card active on mouse hover`, () => {
+  const onMovieOver = jest.fn();
+  const main = shallow(
+      <SmallMovieCard
+        key={movie.id}
+        title={movie.title}
+        img={movie.img}
 
-  const smallMovieComponent = shallow(
-      <SmallMovieCard movie={movie} handleCardOver={handleCardOver}/>
+        onMovieHover={onMovieOver}
+      />
   );
 
-  const smallMovieCard = smallMovieComponent.find(`.small-movie-card`);
+  const movieCard = main.find(`.small-movie-card`);
 
-  it(`Should hover correctly`, () => {
-    smallMovieCard.simulate(`mouseover`);
-
-    expect(handleCardOver).toHaveBeenCalledWith(movie);
-  });
+  movieCard.props().onMouseOver();
 });

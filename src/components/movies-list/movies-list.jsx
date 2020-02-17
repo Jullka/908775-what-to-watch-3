@@ -1,44 +1,34 @@
-import React, {PureComponent} from 'react';
-import PropTypes from "prop-types";
-import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
+import React from 'react';
+import PropTypes from 'prop-types';
+import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
 
-class MoviesList extends PureComponent {
-  constructor(props) {
-    super(props);
+const MoviesList = (props) => {
+  const {movies, onMovieHover} = props;
 
-    this.state = {
-      activeCard: -1
-    };
-
-    this.handleCardOver = this.handleCardOver.bind(this);
-  }
-
-  handleCardOver(movie) {
-    this.setState({
-      activeCard: movie
-    });
-  }
-
-  render() {
-    const {movies, handleTitleClick} = this.props;
-
-    return (
-      <div className="catalog__movies-list">
-        {movies.map(({title, img}) => (
-          <SmallMovieCard key={title} title={title} img={img} onMouseOver={this.handleCardOver} handleTitleClick={handleTitleClick}/>
-        ))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {movies.map((movie) => (
+        <SmallMovieCard
+          key={movie.id}
+          title={movie.title}
+          img={movie.img}
+          onMovieHover={onMovieHover}
+        />
+      ))}
+    </div>
+  );
+};
 
 MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.exact({
-    title: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired
-  })),
-  handleCardOver: PropTypes.func,
-  handleTitleClick: PropTypes.func
+  movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired,
+      })
+  ).isRequired,
+
+  onMovieHover: PropTypes.func.isRequired,
 };
 
 export default MoviesList;

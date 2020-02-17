@@ -4,13 +4,18 @@ import SmallMovieCard from "./small-movie-card";
 
 const movie =
   {
+    id: `001`,
     title: `Shutter Island`,
     img: `img/shutter-island.jpg`
   };
 
 it(`SmallMovieCard component renders correctly`, () => {
   const tree = renderer
-    .create(<SmallMovieCard movie={movie} handleCardOver={() => {}} handleTitleClick={() => {}}/>)
+    .create(<SmallMovieCard
+      key={movie.id}
+      title={movie.title}
+      img={movie.img}
+      onMovieHover={() => {}}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

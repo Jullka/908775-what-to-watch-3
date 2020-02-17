@@ -1,34 +1,57 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import MoviesList from "./movies-list";
+import React from 'react';
+import renderer from 'react-test-renderer';
+import MoviesList from '../movies-list/movies-list.jsx';
 
-const movies = [
+const Movies = [
   {
-    title: `We need to talk about Kevin`,
-    img: `img/we-need-to-talk-about-kevin.jpg`
+    id: `001`,
+    title: `mock-test-Bohemian Rhapsody`,
+    img: `img/macbeth.jpg`,
   },
   {
-    title: `What We Do in the Shadows`,
-    img: `img/what-we-do-in-the-shadows.jpg`
+    id: `002`,
+    title: `mock-test-Macbeth`,
+    img: `img/macbeth.jpg`,
   },
   {
-    title: `Johnny English`,
-    img: `img/johnny-english.jpg`
+    id: `003`,
+    title: `mock-test-Aviator`,
+    img: `img/macbeth.jpg`,
   },
   {
-    title: `Pulp Fiction`,
-    img: `img/pulp-fiction.jpg`
+    id: `004`,
+    title: `mock-test-Revenant`,
+    img: `img/macbeth.jpg`,
   },
   {
-    title: `Snatch`,
-    img: `img/snatch.jpg`
+    id: `005`,
+    title: `mock-test-Johnny English`,
+    img: `img/macbeth.jpg`,
+  },
+  {
+    id: `006`,
+    title: `mock-test-Pulp Fiction`,
+    img: `img/macbeth.jpg`,
+  },
+  {
+    id: `007`,
+    title: `mock-test-Snatch`,
+    img: `img/macbeth.jpg`,
+  },
+  {
+    id: `008`,
+    title: `mock-test-Moonrise Kingdom`,
+    img: `img/macbeth.jpg`,
   },
 ];
 
-it(`MoviesList component renders correctly`, () => {
+it(`Render App`, () => {
   const tree = renderer
-    .create(<MoviesList movies={movies} handleTitleClick={() => {}} />)
-    .toJSON();
+   .create(<MoviesList
+     movies={Movies}
+     onMovieHover={() => {}}
+   />)
+   .toJSON();
 
   expect(tree).toMatchSnapshot();
 });

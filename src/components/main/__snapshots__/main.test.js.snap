@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render App 1`] = `
+exports[`Main component renders correctly 1`] = `
 <div
   className="main"
 >
@@ -266,7 +266,7 @@ exports[`Render App 1`] = `
             <img
               alt="Fantastic Beasts: The Crimes of Grindelwald"
               height="175"
-              src="mg/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>

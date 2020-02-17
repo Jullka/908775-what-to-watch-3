@@ -1,22 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/app/app.jsx";
-import movies from './mocks/movies';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/app/app.jsx';
+import {Movies} from './mocks/movies.js';
 
-const promoFilm = {
+const filmDetails = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
   releaseDate: 2014,
 };
 
-const handleTitleClick = () => {};
-
 ReactDOM.render(
     <App
-      promoFilm={promoFilm}
-      movies={movies}
-      onTitleClick={handleTitleClick}
+      title={filmDetails.title}
+      genre={filmDetails.genre}
+      releaseDate={filmDetails.releaseDate}
+      movies={Movies}
     />,
     document.querySelector(`#root`)
 );
-
