@@ -31,7 +31,7 @@ export const Movies = [
   },
   {
     id: `017`,
-    itle: `Johnny English`,
+    title: `Johnny English`,
     img: `img/johnny-english.jpg`,
   },
   {
