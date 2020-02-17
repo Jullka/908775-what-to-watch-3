@@ -1,18 +1,21 @@
-import React from "react";
-import Main from "../main/main.jsx";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Main from '../main/main.jsx';
 
-const smallMovieCardTitleHandler = () => {};
+const mouseClickHandler = () => {};
+const movieHoverHandler = () => {};
 
 const App = (props) => {
-  const {title, genre, releaseDate, moviesList} = props;
+
+  const {title, genre, releaseDate, movies} = props;
   return (
     <Main
       title={title}
       genre={genre}
       releaseDate={releaseDate}
-      moviesList={moviesList}
-      onSmallMovieCardTitleClick={smallMovieCardTitleHandler}
+      movies={movies}
+      onMouseClick={mouseClickHandler}
+      onMovieHover={movieHoverHandler}
     />
   );
 };
@@ -21,7 +24,14 @@ App.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
-  moviesList: PropTypes.array
+
+  movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired,
+      })
+  ).isRequired,
 };
 
 export default App;
