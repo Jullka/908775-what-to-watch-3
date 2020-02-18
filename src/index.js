@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
-import {Movies} from './mocks/movies.js';
+import {Movies, movieDetails} from './mocks/movies.js';
 
 const filmDetails = {
   title: `The Grand Budapest Hotel`,
@@ -15,6 +15,7 @@ ReactDOM.render(
       genre={filmDetails.genre}
       releaseDate={filmDetails.releaseDate}
       movies={Movies}
+      movieDetails={movieDetails}
     />,
     document.querySelector(`#root`)
 );

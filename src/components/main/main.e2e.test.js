@@ -116,7 +116,7 @@ const Movies = [
   },
 ];
 
-it(`Should movie card title be clicked`, () => {
+it(`Should movieCardTitle be clicked`, () => {
   const onMovieTitleClick = jest.fn();
   const onMovieMouseHover = jest.fn();
 
@@ -134,4 +134,24 @@ it(`Should movie card title be clicked`, () => {
   const movieTitle = main.find(`.movie-card__title`);
 
   movieTitle.props().onClick();
+});
+
+it(`Should movieCardPoster be clicked`, () => {
+  const onMovieTitleClick = jest.fn();
+  const onMovieMouseHover = jest.fn();
+
+  const main = shallow(
+      <Main
+        title={promoMovie.title}
+        genre={promoMovie.genre}
+        releaseDate={promoMovie.releaseDate}
+        movies={Movies}
+        onMouseClick={onMovieTitleClick}
+        onMovieHover={onMovieMouseHover}
+      />
+  );
+
+  const moviePoster = main.find(`.movie-card__poster`);
+
+  moviePoster.props().onClick();
 });
