@@ -69,6 +69,7 @@ exports[`Main component renders correctly 1`] = `
       >
         <div
           className="movie-card__poster"
+          onClick={[Function]}
         >
           <img
             alt="The Grand Budapest Hotel poster"
