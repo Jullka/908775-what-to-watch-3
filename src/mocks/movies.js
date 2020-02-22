@@ -2,42 +2,50 @@ const Movies = [
   {
     id: `011`,
     title: `Moonrise Kingdom`,
-    img: `img/moonrise-kingdom.jpg`
+    img: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `012`,
     title: `Seven Years in Tibet`,
     img: `img/seven-years-in-tibet.jpg`,
+    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: `013`,
     title: `Dardjeeling Limited`,
     img: `img/dardjeeling-limited.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `014`,
     title: `Orlando`,
     img: `img/orlando.jpg`,
+    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: `015`,
     title: `Midnight Special`,
     img: `img/midnight-special.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `016`,
     title: `Shutter Island`,
     img: `img/shutter-island.jpg`,
+    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: `017`,
     title: `Johnny English`,
     img: `img/johnny-english.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: `018`,
     title: `Mindhunter`,
     img: `img/mindhunter.jpg`,
+    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
 ];
 

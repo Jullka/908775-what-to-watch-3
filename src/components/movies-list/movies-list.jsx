@@ -11,6 +11,7 @@ const MoviesList = (props) => {
         <SmallMovieCard
           key={movie.id}
           title={movie.title}
+          video={movie.video}
           img={movie.img}
           onMovieHover={onMovieHover}
         />
@@ -25,6 +26,7 @@ MoviesList.propTypes = {
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         img: PropTypes.string.isRequired,
+        video: PropTypes.string.isRequired
       })
   ).isRequired,
 

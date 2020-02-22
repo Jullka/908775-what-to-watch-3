@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const MoviePage = (props) => {
   const {movieDetails} = props;
   const {title, genre, releaseDate, poster, bigPoster, ratingScore, ratingLevel, ratingCount, text, director, starring} = movieDetails;
+
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
