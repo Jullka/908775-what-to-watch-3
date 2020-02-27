@@ -1,33 +1,77 @@
-import React from 'react';
+import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import VideoPlayer from '../video-player/video-player.jsx';
 
+const VIDEO_PLAY_DELAY = 1000;
 
-const SmallMovieCard = (props) => {
+class SmallMovieCard extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  const {title, img, video, isPlaying, onMovieHover} = props;
+    this.state = {
+      isPlaying: false
+    };
 
-  return (
-    <article className="small-movie-card catalog__movies-card"
-      onMouseOver={onMovieHover}>
-      <div className="small-movie-card__image">
-        {isPlaying ?
-          <VideoPlayer src={video} poster={img} isPlaying={isPlaying}/>
-          : <img src={img} alt={title} width="280" height="175"/>}
-      </div>
-      <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
-      </h3>
-    </article>
-  );
-};
+    this._isHovered = false;
+  }
+
+  render() {
+    const {movie, onMovieHover, onClick} = this.props;
+    const {title, poster, video} = movie;
+    const {isPlaying} = this.state;
+
+    return (
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseOver={() => onMovieHover(movie)}
+        onClick={() => onClick(movie)}
+        onMouseEnter={() => this._handleMouseEnter()}
+        onMouseLeave={() => this._handleMouseLeave()}
+      >
+        <div className="small-movie-card__image">
+          <VideoPlayer
+            video={video}
+            poster={poster}
+            isPlaying={isPlaying}
+          />
+        </div>
+        <h3 className="small-movie-card__title">
+          <a
+            className="small-movie-card__link"
+            href="movie-page.html"
+            onClick={(evt) => evt.preventDefault()}
+          >
+            {title}
+          </a>
+        </h3>
+      </article>
+    );
+  }
+
+  _handleMouseEnter() {
+    this._isHovered = true;
+
+    setTimeout(() => {
+      if (this._isHovered) {
+        this.setState({isPlaying: true});
+      }
+    }, VIDEO_PLAY_DELAY);
+  }
+
+  _handleMouseLeave() {
+    this._isHovered = false;
+    this.setState({isPlaying: false});
+  }
+}
 
 SmallMovieCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
-  video: PropTypes.string.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  onMovieHover: PropTypes.func.isRequired,
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    video: PropTypes.string.isRequired
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
+  onMovieHover: PropTypes.func.isRequired
 };
 
 export default SmallMovieCard;

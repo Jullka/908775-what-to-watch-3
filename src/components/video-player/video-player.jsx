@@ -1,7 +1,6 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 
-
 class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
@@ -10,15 +9,22 @@ class VideoPlayer extends PureComponent {
 
     this.state = {
       progress: 0,
+      isLoading: true,
       isPlaying: props.isPlaying
     };
   }
 
   componentDidMount() {
-    const {video} = this.props;
+    const {video, poster} = this.props;
     const videoPlayer = this._videoRef.current;
 
-    videoPlayer.video = video;
+    videoPlayer.src = video;
+    videoPlayer.poster = poster;
+    videoPlayer.muted = true;
+
+    videoPlayer.oncanplaythrough = () => this.setState({
+      isLoading: false
+    });
 
     videoPlayer.onplay = () => this.setState({
       isPlaying: true
@@ -28,48 +34,45 @@ class VideoPlayer extends PureComponent {
       isPlaying: false
     });
 
-    video.ontimeupdate = () => this.setState({
+    videoPlayer.onload = () => this.setState({
+      isPlaying: false
+    });
+
+    videoPlayer.ontimeupdate = () => this.setState({
       progress: videoPlayer.currentTime
     });
   }
 
   componentWillUnmount() {
     const videoPlayer = this._videoRef.current;
+
+    videoPlayer.oncanplaythrough = null;
     videoPlayer.onplay = null;
     videoPlayer.onpause = null;
+    videoPlayer.onload = null;
     videoPlayer.ontimeupdate = null;
-    videoPlayer.video = ``;
-  }
-
-  componentDidUpdate() {
-    const {video} = this.props;
-    const videoPlayer = this._videoRef.current;
-    if (this.props.isPlaying) {
-      videoPlayer.play();
-    } else {
-      videoPlayer.pause();
-      videoPlayer.video = video;
-    }
+    videoPlayer.src = ``;
+    videoPlayer.poster = ``;
   }
 
   render() {
-    const {video, img} = this.props;
-
     return (
       <video
-        className="player__video"
-        ref={this._videoRef}
-        width="auto" height="100%"
-        muted
-        video={video}
-        poster={img}>
-      </video>
+        width="100%"
+        ref={this._videoRef} />
     );
+  }
+
+  componentDidUpdate() {
+    const videoPlayer = this._videoRef.current;
+    const {isPlaying} = this.props;
+
+    videoPlayer[isPlaying ? `play` : `load`]();
   }
 }
 
 VideoPlayer.propTypes = {
-  img: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
   video: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired
 };
