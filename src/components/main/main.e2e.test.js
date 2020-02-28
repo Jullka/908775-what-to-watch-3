@@ -7,151 +7,296 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-const promoMovie = {
+const movieDetails = {
+  id: `044`,
   title: `Terminator 2: Judgment Day`,
   genre: `Thrillers`,
   releaseDate: 1991,
+  poster: `img/johnny-english.jpg`,
+  bigPoster: `img/moonrise-kingdom.jpg`,
+  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  ratingScore: `8,9`,
+  ratingLevel: `Very good`,
+  ratingCount: 240,
+  text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+  director: `Steven Zaillian`,
+  starring: `John Travolta, Robert Duvall, Stephen Fry and other`
 };
 
 const Movies = [
   {
-    id: `011`,
-    title: `Fantastic Beasts: The Crimes of Grindelwald`,
-    img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  },
-  {
-    id: `012`,
-    title: `Bohemian Rhapsody`,
-    img: `img/bohemian-rhapsody.jpg`,
-  },
-  {
-    id: `013`,
-    title: `Macbeth`,
-    img: `img/macbeth.jpg`,
-  },
-  {
     id: `014`,
     title: `Aviator`,
-    img: `img/aviator.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `015`,
     title: `We need to talk about Kevin`,
-    img: `img/we-need-to-talk-about-kevin.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `016`,
     title: `What We Do in the Shadows`,
-    img: `img/what-we-do-in-the-shadows.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `017`,
     title: `Revenant`,
-    img: `img/revenant.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `018`,
     title: `Johnny English`,
-    img: `img/johnny-english.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `019`,
     title: `Shutter Island`,
-    img: `img/shutter-island.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `020`,
     title: `Pulp Fiction`,
-    img: `img/pulp-fiction.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `021`,
     title: `No Country for Old Men`,
-    img: `img/no-country-for-old-men.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `022`,
     title: `Snatch`,
-    img: `img/snatch.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `023`,
     title: `Moonrise Kingdom`,
-    img: `img/moonrise-kingdom.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `024`,
     title: `Seven Years in Tibet`,
-    img: `img/seven-years-in-tibet.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `025`,
     title: `Midnight Special`,
-    img: `img/midnight-special.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `026`,
     title: `War of the Worlds`,
-    img: `img/war-of-the-worlds.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `027`,
     title: `Dardjeeling Limited`,
-    img: `img/dardjeeling-limited.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `028`,
     title: `Orlando`,
-    img: `img/orlando.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `29`,
     title: `Mindhunter`,
-    img: `img/mindhunter.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
   {
     id: `030`,
     title: `Midnight Special`,
-    img: `img/midnight-special.jpg`,
+    genre: `Thrillers`,
+    releaseDate: 1991,
+    poster: `img/johnny-english.jpg`,
+    bigPoster: `img/moonrise-kingdom.jpg`,
+    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    ratingScore: `8,9`,
+    ratingLevel: `Very good`,
+    ratingCount: 240,
+    text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
+    director: `Steven Zaillian`,
+    starring: `John Travolta, Robert Duvall, Stephen Fry and other`
   },
 ];
 
-it(`Should movieCardTitle be clicked`, () => {
-  const onMovieTitleClick = jest.fn();
-  const onMovieMouseHover = jest.fn();
+const mockEvent = {
+  preventDefault() {},
+};
+
+it(`Should movieCard be clicked`, () => {
+  const handleMovieCardClick = jest.fn();
 
   const main = shallow(
       <Main
-        title={promoMovie.title}
-        genre={promoMovie.genre}
-        releaseDate={promoMovie.releaseDate}
+        movieDetails={movieDetails}
         movies={Movies}
-        onMouseClick={onMovieTitleClick}
-        onMovieHover={onMovieMouseHover}
+        onMovieClick={handleMovieCardClick}
       />
   );
 
-  const movieTitle = main.find(`.movie-card__title`);
-
-  movieTitle.props().onClick();
+  const movieTitle = main.find(`.small-movie-card__link`);
+  movieTitle.forEach((title) => title.simulate(`click`, mockEvent));
 });
 
-it(`Should movieCardPoster be clicked`, () => {
-  const onMovieTitleClick = jest.fn();
-  const onMovieMouseHover = jest.fn();
-
-  const main = shallow(
-      <Main
-        title={promoMovie.title}
-        genre={promoMovie.genre}
-        releaseDate={promoMovie.releaseDate}
-        movies={Movies}
-        onMouseClick={onMovieTitleClick}
-        onMovieHover={onMovieMouseHover}
-      />
-  );
-
-  const moviePoster = main.find(`.movie-card__poster`);
-
-  moviePoster.props().onClick();
-});

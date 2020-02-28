@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import MoviePage from "./movie-page.jsx";
 
 const movieDetails = {
+  id: `022`,
   title: `Avengers: Infinity War`,
   genre: `Comedy`,
   releaseDate: 1999,
@@ -19,18 +20,8 @@ const movieDetails = {
 it(`MoviePagecomponent renders correctly`, () => {
   const tree = renderer
     .create(<MoviePage
-      movieDetails={movieDetails}
-      title={movieDetails.title}
-      genre={movieDetails.genre}
-      releaseDate={movieDetails.releaseDate}
-      poster={movieDetails.poster}
-      bigPoster={movieDetails.bigPoster}
-      ratingScore={movieDetails.ratingScore}
-      ratingLevel={movieDetails.ratingLevel}
-      ratingCount={movieDetails.ratingCount}
-      text={movieDetails.text}
-      director={movieDetails.director}
-      starring={movieDetails.starring}/>)
+      movie={movieDetails}
+    />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

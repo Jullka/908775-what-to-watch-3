@@ -11,8 +11,8 @@ exports[`Render App 1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Terminator 2: Judgment Day"
+        src="img/moonrise-kingdom.jpg"
       />
     </div>
     <h1
@@ -69,12 +69,11 @@ exports[`Render App 1`] = `
       >
         <div
           className="movie-card__poster"
-          onClick={[Function]}
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Terminator 2: Judgment Day"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="img/johnny-english.jpg"
             width="218"
           />
         </div>
@@ -83,7 +82,6 @@ exports[`Render App 1`] = `
         >
           <h2
             className="movie-card__title"
-            onClick={[Function]}
           >
             Terminator 2: Judgment Day
           </h2>
@@ -259,16 +257,16 @@ exports[`Render App 1`] = `
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
-              height="175"
-              src="mg/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -277,6 +275,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -284,16 +283,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Bohemian Rhapsody"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -302,6 +301,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Bohemian Rhapsody
             </a>
@@ -309,16 +309,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Macbeth"
-              height="175"
-              src="img/macbeth.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -327,6 +327,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Macbeth
             </a>
@@ -334,16 +335,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Aviator"
-              height="175"
-              src="img/aviator.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -352,6 +353,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Aviator
             </a>
@@ -359,16 +361,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="We need to talk about Kevin"
-              height="175"
-              src="img/we-need-to-talk-about-kevin.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -377,6 +379,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               We need to talk about Kevin
             </a>
@@ -384,16 +387,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="What We Do in the Shadows"
-              height="175"
-              src="img/what-we-do-in-the-shadows.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -402,6 +405,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               What We Do in the Shadows
             </a>
@@ -409,16 +413,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Revenant"
-              height="175"
-              src="img/revenant.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -427,6 +431,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Revenant
             </a>
@@ -434,16 +439,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Johnny English"
-              height="175"
-              src="img/johnny-english.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -452,6 +457,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Johnny English
             </a>
@@ -459,16 +465,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Shutter Island"
-              height="175"
-              src="img/shutter-island.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -477,6 +483,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Shutter Island
             </a>
@@ -484,16 +491,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Pulp Fiction"
-              height="175"
-              src="img/pulp-fiction.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -502,6 +509,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Pulp Fiction
             </a>
@@ -509,16 +517,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="No Country for Old Men"
-              height="175"
-              src="img/no-country-for-old-men.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -527,6 +535,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               No Country for Old Men
             </a>
@@ -534,16 +543,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Snatch"
-              height="175"
-              src="img/snatch.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -552,6 +561,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Snatch
             </a>
@@ -559,16 +569,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Moonrise Kingdom"
-              height="175"
-              src="img/moonrise-kingdom.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -577,6 +587,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Moonrise Kingdom
             </a>
@@ -584,16 +595,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Seven Years in Tibet"
-              height="175"
-              src="img/seven-years-in-tibet.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -602,6 +613,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Seven Years in Tibet
             </a>
@@ -609,16 +621,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Midnight Special"
-              height="175"
-              src="img/midnight-special.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -627,6 +639,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Midnight Special
             </a>
@@ -634,16 +647,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="War of the Worlds"
-              height="175"
-              src="img/war-of-the-worlds.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -652,6 +665,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               War of the Worlds
             </a>
@@ -659,16 +673,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Dardjeeling Limited"
-              height="175"
-              src="img/dardjeeling-limited.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -677,6 +691,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Dardjeeling Limited
             </a>
@@ -684,16 +699,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Orlando"
-              height="175"
-              src="img/orlando.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -702,6 +717,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Orlando
             </a>
@@ -709,16 +725,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Mindhunter"
-              height="175"
-              src="img/mindhunter.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -727,6 +743,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Mindhunter
             </a>
@@ -734,16 +751,16 @@ exports[`Render App 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Midnight Special"
-              height="175"
-              src="img/midnight-special.jpg"
-              width="280"
+            <video
+              width="100%"
             />
           </div>
           <h3
@@ -752,6 +769,7 @@ exports[`Render App 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Midnight Special
             </a>
