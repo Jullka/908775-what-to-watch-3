@@ -17,7 +17,7 @@ const movieDetails = {
   starring: `Robert Downey Jr., Chris Hemsworth, Mark Ruffalo, Chris Evans, Scarlett Johansson`
 };
 
-it(`MoviePagecomponent renders correctly`, () => {
+it(`MoviePage renders correctly`, () => {
   const tree = renderer
     .create(<MoviePage
       movie={movieDetails}
