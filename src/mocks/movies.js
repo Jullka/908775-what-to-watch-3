@@ -13,7 +13,7 @@ const Movies = [
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
     director: `Steven Zaillian`,
-    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`],
+    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
     reviews: [
       {
         id: `1`,
@@ -52,7 +52,7 @@ const Movies = [
     video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
     director: `Steven Zaillian`,
-    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`],
+    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
     reviews: [
       {
         id: `4`,
@@ -91,7 +91,7 @@ const Movies = [
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
     director: `Steven Zaillian`,
-    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`],
+    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
     reviews: [
       {
         id: `7`,
@@ -130,7 +130,7 @@ const Movies = [
     video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
     director: `Steven Zaillian`,
-    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`],
+    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
     reviews: [
       {
         id: `10`,
@@ -169,7 +169,7 @@ const Movies = [
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
     director: `Steven Zaillian`,
-    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`],
+    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
     reviews: [
       {
         id: `13`,
@@ -208,7 +208,7 @@ const Movies = [
     video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
     director: `Steven Zaillian`,
-    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`],
+    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
     reviews: [
       {
         id: `15`,
@@ -247,7 +247,7 @@ const Movies = [
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
     director: `Steven Zaillian`,
-    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`],
+    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
     reviews: [
       {
         id: `19`,
@@ -286,7 +286,7 @@ const Movies = [
     video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
     director: `Steven Zaillian`,
-    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`],
+    starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
     reviews: [
       {
         id: `22`,
@@ -326,7 +326,7 @@ const movieDetails = {
   ratingCount: 240,
   text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
   director: `Steven Zaillian`,
-  starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`],
+  starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
   reviews: [
     {
       id: `25`,
