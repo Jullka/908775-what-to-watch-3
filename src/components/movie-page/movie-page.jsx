@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tab from '../tab/tab.jsx';
 import Tabs from '../tabs/tabs.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
-import {Movies} from '/Users/jullka/Documents/Курсы/HTMLAcademy/Js3react/908775-what-to-watch-3/src/mocks/movies.js';
+import {Movies} from '../../mocks/movies.js';
 
 // const TAB_NAMES = [`Overview`, `Details`, `Reviews`];
 const MOVIES_LIKE_THIS_MAX_LENGTH = 4;
