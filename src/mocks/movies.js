@@ -80,7 +80,7 @@ const Movies = [
   {
     id: `013`,
     title: `Dardjeeling Limited`,
-    genre: `Drama`,
+    genre: `Documentary`,
     releaseDate: 2014,
     runTime: 129,
     poster: `img/dardjeeling-limited.jpg`,
@@ -119,7 +119,7 @@ const Movies = [
   {
     id: `014`,
     title: `Orlando`,
-    genre: `Drama`,
+    genre: `Horror`,
     releaseDate: 2014,
     runTime: 129,
     poster: `img/orlando.jpg`,
@@ -158,7 +158,7 @@ const Movies = [
   {
     id: `015`,
     title: `Midnight Special`,
-    genre: `Drama`,
+    genre: `Kids & Family`,
     releaseDate: 2014,
     runTime: 129,
     poster: `img/midnight-special.jpg`,
@@ -197,7 +197,7 @@ const Movies = [
   {
     id: `016`,
     title: `Shutter Island`,
-    genre: `Drama`,
+    genre: `Romance`,
     releaseDate: 2014,
     runTime: 129,
     poster: `img/shutter-island.jpg`,
@@ -236,7 +236,7 @@ const Movies = [
   {
     id: `017`,
     title: `Johnny English`,
-    genre: `Drama`,
+    genre: `Romance`,
     releaseDate: 2014,
     runTime: 129,
     poster: `img/johnny-english.jpg`,
@@ -275,7 +275,7 @@ const Movies = [
   {
     id: `018`,
     title: `Mindhunter`,
-    genre: `Drama`,
+    genre: `Thriller`,
     releaseDate: 2014,
     runTime: 129,
     poster: `img/mindhunter.jpg`,
@@ -315,7 +315,7 @@ const Movies = [
 
 const movieDetails = {
   title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
+  genre: `Thriller`,
   releaseDate: 2014,
   runTime: 129,
   poster: `img/johnny-english.jpg`,
