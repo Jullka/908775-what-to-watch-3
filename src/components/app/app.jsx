@@ -1,17 +1,11 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {connect} from 'react-redux';
 import MoviePage from '../movie-page/movie-page.jsx';
 import Main from '../main/main.jsx';
 
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeCard: null
-    };
-  }
 
   render() {
     const {movieDetails} = this.props;
@@ -32,22 +26,17 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {movieDetails, movies} = this.props;
-    const {activeCard} = this.state;
+    const {movieDetails, selectedMovie} = this.props;
 
-    if (activeCard) {
+    if (selectedMovie) {
       return <MoviePage
-        movie={this.state.activeCard}
+        movie={selectedMovie}
       />;
     }
 
     return (
       <Main
         movieDetails={movieDetails}
-        movies={movies}
-        onMovieClick={(movie) => {
-          this.setState({activeCard: movie});
-        }}
       />
     );
   }
@@ -55,16 +44,26 @@ class App extends PureComponent {
 
 App.propTypes = {
   movieDetails: PropTypes.shape({
+    // id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.number.isRequired,
   }).isRequired,
 
-  movies: PropTypes.arrayOf(PropTypes.shape({
+  selectedMovie: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseDate: PropTypes.number.isRequired
   })
-  ).isRequired
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  selectedMovie: state.selectedMovie
+});
+
+const mapDispatchToProps = () => ({
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
