@@ -1,15 +1,11 @@
 import {extend} from "../utils.js";
 import {Movies} from '../mocks/movies.js';
 
-// export default (movies, selectedGenre) => selectedGenre === Genre.ALL ?
-//   movies :
-//   movies.filter(({genre}) => genre === selectedGenre);
 const ALL_GENRES = `All genres`;
 
 const initialState = {
-  selectedGenre: `All genres`,
+  selectedGenre: ALL_GENRES,
   movies: Movies,
-  filteredMovies: [...Movies],
   selectedMovie: null
 };
 
@@ -40,22 +36,23 @@ const reducer = (state = initialState, action) => {
         selectedGenre: action.payload
       });
 
-    case ActionType.GET_MOVIES_BY_GENRE:
-      let getMoviesByGenre = [];
-      // filteredMovies = (movies, selectedGenre) => selectedGenre === Genre ?
-      //   Movies :
-      //   Movies.filter(({genre}) => genre === selectedGenre);
-      if (state.genre === ALL_GENRES) {
-        getMoviesByGenre = Movies;
-      } else {
-        getMoviesByGenre = Movies.filter((movie) => movie.genre === state.selectedGenre);
-      }
-      return extend(state, {
-        filteredMovies: getMoviesByGenre(state.movies, state.selectedGenre),
-      });
+      // case ActionType.GET_MOVIES_BY_GENRE:
+      //   let getMoviesByGenre = [];
+
+      //   if (state.genre === ALL_GENRES) {
+      //     getMoviesByGenre = Movies;
+      //   } else {
+      //     getMoviesByGenre = Movies.filter((movie) => movie.genre === state.selectedGenre);
+      //   }
+      //   return extend(state, {
+      //     selectedMovie: getMoviesByGenre(state.movies, state.selectedGenre),
+      //   });
 
     case ActionType.SELECT_MOVIE:
-      return extend(state, {selectedMovie: action.payload});
+      return extend(state, {
+        selectedMovie: action.payload
+      });
+
     default:
       return state;
   }

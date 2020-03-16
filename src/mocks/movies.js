@@ -320,7 +320,7 @@ const movieDetails = {
   runTime: 129,
   poster: `img/johnny-english.jpg`,
   bigPoster: `img/moonrise-kingdom.jpg`,
-  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   ratingScore: 8.9,
   ratingLevel: `Very good`,
   ratingCount: 240,

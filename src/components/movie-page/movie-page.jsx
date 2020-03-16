@@ -3,17 +3,10 @@ import PropTypes from 'prop-types';
 import Tab from '../tab/tab.jsx';
 import Tabs from '../tabs/tabs.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
-import {Movies} from '../../mocks/movies.js';
-
-const MOVIES_LIKE_THIS_MAX_LENGTH = 4;
 
 const MoviePage = (props) => {
   const {movie} = props;
   const {title, genre, releaseDate, poster, bigPoster, ratingScore, ratingLevel, ratingCount, text, director, starring, reviews, runTime} = movie;
-
-  const getMoviesLikeThis = () => {
-    return (Movies.filter((item) => item.genre === Movies.genre)).slice(0, MOVIES_LIKE_THIS_MAX_LENGTH);
-  };
 
   return (
     <Fragment>
@@ -146,9 +139,7 @@ const MoviePage = (props) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <MoviesList
-            movies={getMoviesLikeThis(movie, MOVIES_LIKE_THIS_MAX_LENGTH)}
-            onMovieClick={() => {}} />
+          <MoviesList />
         </section>
 
         <footer className="page-footer">

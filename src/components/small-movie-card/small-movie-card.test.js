@@ -1,5 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import {reducer} from '../../reducer/reducer.js';
+import {createStore} from "redux";
+import {Provider} from "react-redux";
 import SmallMovieCard from "./small-movie-card";
 
 const movie = {
@@ -17,18 +20,21 @@ const movie = {
   starring: `John Travolta, Robert Duvall, Stephen Fry and other`
 };
 
-const handleMovieClick = () => {};
 const handleHover = () => {};
+
+const store = createStore(reducer);
 
 it(`SmallMovieCard component renders correctly`, () => {
   const tree = renderer
-    .create(<SmallMovieCard
-      movie={movie}
-      onMovieHover={handleHover}
-      onClick={handleMovieClick}/>,
-    {
-      createNodeMock: () => ({})
-    }
+    .create(
+        <Provider store={store}>
+          <SmallMovieCard
+            movie={movie}
+            onMovieHover={handleHover}/>
+        </Provider>,
+        {
+          createNodeMock: () => ({})
+        }
     )
     .toJSON();
 

@@ -1,7 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
+import getMoviesLikeThis from '../utils/get-movies-like-this.js';
+import getMoviesByGenre from '../utils/get-movies-by-genre.js';
 
 class MoviesList extends PureComponent {
   constructor(props) {
@@ -44,7 +46,9 @@ MoviesList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.filteredMovies
+  movies: state.selectedMovie ?
+    getMoviesLikeThis(state.selectedMovie, state.movies) :
+    getMoviesByGenre(state.movies, state.selectedGenre)
 });
 
 const mapDispatchToProps = () => ({

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import MoviesList from '../movies-list/movies-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 
-// const ALL_GENRES = `All genres`;
-
 const Main = ({movieDetails}) => {
   const {title, genre, releaseDate, bigPoster, poster} = movieDetails;
 

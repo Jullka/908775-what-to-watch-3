@@ -1,9 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import {reducer} from '../../reducer/reducer.js';
-import {createStore} from "redux";
-import {Provider} from "react-redux";
-import GenresList from "./genres-list.jsx";
+import {reducer, ActionCreator} from './reducer.js';
+
+const ALL_GENRES = `All genres`;
 
 const Movies = [
   {
@@ -26,7 +23,7 @@ const Movies = [
   {
     id: `2`,
     title: `Spider-Man: Far From Home`,
-    genre: `Drama`,
+    genre: `Thriller`,
     releaseDate: 2019,
     runTime: 114,
     poster: `img/seven-years-in-tibet.jpg`,
@@ -59,24 +56,34 @@ const Movies = [
   }
 ];
 
-const selectedGenre = `Drama`;
-const onGenreSelect = () => {};
-const store = createStore(reducer);
+it(`Reducer should change genre`, () => {
+  const initialState = {
+    selectedGenre: ALL_GENRES,
+    movies: Movies,
+    selectedMovie: null
+  };
+  const targetState = {
+    selectedGenre: `Comedy`,
+    movies: Movies,
+    selectedMovie: null
+  };
 
-it(`GenresList should render correctly`, () => {
-  const tree = renderer
-    .create(
-        <Provider store={store}>
-          <GenresList
-            movies={Movies}
-            selectedGenre={selectedGenre}
-            onGenreSelect={onGenreSelect}
-          />
-        </Provider>,
-        {
-          createNodeMock: () => ({})
-        }
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  expect(reducer(initialState, ActionCreator.changeGenre(`Comedy`)))
+    .toEqual(targetState);
+});
+
+it(`Reducer should select movie`, () => {
+  const initialState = {
+    selectedGenre: ALL_GENRES,
+    movies: Movies,
+    selectedMovie: null
+  };
+  const targetState = {
+    selectedGenre: ALL_GENRES,
+    movies: Movies,
+    selectedMovie: Movies[0]
+  };
+
+  expect(reducer(initialState, ActionCreator.selectMovie(Movies[0])))
+    .toEqual(targetState);
 });
