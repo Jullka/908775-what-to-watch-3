@@ -2,17 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/reducer.js';
+import getGenresList from '../utils/get-movies-like-this.js';
 
 const ALL_GENRES = `All genres`;
 const ACTIVE_CLASS = `catalog__genres-item--active`;
-const MAX_GENRES_COUNT = 9;
-
-const getGenresList = (movies) => {
-  return [ALL_GENRES, ...new Set(movies.map((movie) => movie.genre))].slice(MAX_GENRES_COUNT);
-};
 
 const GenresList = (props) => {
-  const {movies, selectedGenre, onGenreSelect} = props;
+  const {genres, selectedGenre, onGenreSelect} = props;
 
   const handleGenreClick = (evt, genre) => {
     evt.preventDefault();
@@ -29,7 +25,7 @@ const GenresList = (props) => {
       >
         <a href="#" className="catalog__genres-link">{ALL_GENRES}</a>
       </li>
-      {getGenresList(movies).map((genre, i) => (
+      {genres.map((genre, i) => (
         <li
           key={genre + i}
           className={`catalog__genres-item ${selectedGenre === genre ? ACTIVE_CLASS : ``}`}
@@ -43,25 +39,21 @@ const GenresList = (props) => {
 };
 
 GenresList.propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired
-      })
-  ).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedGenre: PropTypes.string.isRequired,
   onGenreSelect: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.movies,
-  selectedGenre: state.selectedGenre
+const mapStateToProps = (movies, selectedGenre) => ({
+  genres: getGenresList(movies),
+  selectedGenre
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreSelect(genre) {
     dispatch(ActionCreator.changeGenre(genre));
     dispatch(ActionCreator.getMoviesByGenre());
+    dispatch(ActionCreator.resetShowMoreMovies());
   }
 });
 

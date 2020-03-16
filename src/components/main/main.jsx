@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MoviesList from '../movies-list/movies-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
+import ShowMore from '../show-more/show-more.jsx';
 
 const Main = ({movieDetails}) => {
   const {title, genre, releaseDate, bigPoster, poster} = movieDetails;
@@ -70,10 +71,8 @@ const Main = ({movieDetails}) => {
 
           <GenresList />
           <MoviesList />
+          <ShowMore />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
         </section>
 
         <footer className="page-footer">
