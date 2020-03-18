@@ -1,6 +1,6 @@
 import {extend} from "../utils.js";
 import {Movies} from '../mocks/movies.js';
-import getMoviesByGenre from '../components/utils/get-movies-by-genre.js';
+import {getMoviesByGenre} from '../components/utils/get-movies-by-genre.js';
 
 const ALL_GENRES = `All genres`;
 const SHOWN_MOVIES_NUMBER = 8;

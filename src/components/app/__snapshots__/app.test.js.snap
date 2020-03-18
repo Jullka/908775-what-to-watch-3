@@ -152,7 +152,7 @@ exports[`Render App 1`] = `
         className="catalog__genres-list"
       >
         <li
-          className="catalog__genres-item "
+          className="catalog__genres-item catalog__genres-item--active"
           onClick={[Function]}
         >
           <a
@@ -162,13 +162,296 @@ exports[`Render App 1`] = `
             All genres
           </a>
         </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Drama
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Documentary
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Horror
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Kids & Family
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Romance
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Thriller
+          </a>
+        </li>
       </ul>
       <div
         className="catalog__movies-list"
-      />
+      >
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              width="100%"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+              onClick={[Function]}
+            >
+              Moonrise Kingdom
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              width="100%"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+              onClick={[Function]}
+            >
+              Seven Years in Tibet
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              width="100%"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+              onClick={[Function]}
+            >
+              Dardjeeling Limited
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              width="100%"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+              onClick={[Function]}
+            >
+              Orlando
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              width="100%"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+              onClick={[Function]}
+            >
+              Midnight Special
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              width="100%"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+              onClick={[Function]}
+            >
+              Shutter Island
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              width="100%"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+              onClick={[Function]}
+            >
+              Johnny English
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              width="100%"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+              onClick={[Function]}
+            >
+              Mindhunter
+            </a>
+          </h3>
+        </article>
+      </div>
       <div
         className="catalog__more"
-      />
+      >
+        <button
+          className="catalog__button"
+          onClick={[Function]}
+          type="button"
+        >
+          Show more
+        </button>
+      </div>
     </section>
     <footer
       className="page-footer"

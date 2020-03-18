@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
-import getMoviesLikeThis from '../utils/get-movies-like-this.js';
+import {getMoviesLikeThis} from '../utils/get-movies-like-this.js';
 
 class MoviesList extends PureComponent {
   constructor(props) {
@@ -44,10 +44,9 @@ MoviesList.propTypes = {
   ).isRequired
 };
 
-const mapStateToProps = (selectedMovie, movies, filteredMovies, shownMoviesNumber) => ({
-  movies: selectedMovie ?
-    getMoviesLikeThis(selectedMovie, movies) :
-    filteredMovies.slice(0, shownMoviesNumber)
+const mapStateToProps = (state) => ({
+  movies: state.selectedMovie ?
+    getMoviesLikeThis(state.selectedMovie, state.movies) : state.filteredMovies.slice(0, state.shownMoviesNumber)
 });
 
 const mapDispatchToProps = () => ({

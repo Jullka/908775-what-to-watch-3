@@ -1,5 +1,7 @@
 const ALL_GENRES = `All genres`;
 
-export default (movies, selectedGenre) =>
+const getMoviesByGenre = (movies, selectedGenre) =>
   selectedGenre === ALL_GENRES ?
     movies : movies.filter(({genre}) => genre === selectedGenre);
+
+export {getMoviesByGenre};

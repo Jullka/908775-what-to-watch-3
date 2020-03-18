@@ -3,5 +3,13 @@
 exports[`ShowMore should render correctly 1`] = `
 <div
   className="catalog__more"
-/>
+>
+  <button
+    className="catalog__button"
+    onClick={[Function]}
+    type="button"
+  >
+    Show more
+  </button>
+</div>
 `;
