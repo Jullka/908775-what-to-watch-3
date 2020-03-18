@@ -153,6 +153,7 @@ exports[`Main component renders correctly 1`] = `
       >
         <li
           className="catalog__genres-item catalog__genres-item--active"
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -162,27 +163,19 @@ exports[`Main component renders correctly 1`] = `
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
           >
-            Comedies
+            Drama
           </a>
         </li>
         <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Crime
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -192,17 +185,8 @@ exports[`Main component renders correctly 1`] = `
           </a>
         </li>
         <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Dramas
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -212,7 +196,8 @@ exports[`Main component renders correctly 1`] = `
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -222,7 +207,8 @@ exports[`Main component renders correctly 1`] = `
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -232,263 +218,20 @@ exports[`Main component renders correctly 1`] = `
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
           >
-            Sci-Fi
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Thrillers
+            Thriller
           </a>
         </li>
       </ul>
       <div
         className="catalog__movies-list"
       >
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              width="100%"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Aviator
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              width="100%"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              We need to talk about Kevin
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              width="100%"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              What We Do in the Shadows
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              width="100%"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Revenant
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              width="100%"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Johnny English
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              width="100%"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Shutter Island
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              width="100%"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Pulp Fiction
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              width="100%"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              No Country for Old Men
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              width="100%"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Snatch
-            </a>
-          </h3>
-        </article>
         <article
           className="small-movie-card catalog__movies-card"
           onClick={[Function]}
@@ -538,58 +281,6 @@ exports[`Main component renders correctly 1`] = `
               onClick={[Function]}
             >
               Seven Years in Tibet
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              width="100%"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Midnight Special
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              width="100%"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              War of the Worlds
             </a>
           </h3>
         </article>
@@ -667,7 +358,7 @@ exports[`Main component renders correctly 1`] = `
               href="movie-page.html"
               onClick={[Function]}
             >
-              Mindhunter
+              Midnight Special
             </a>
           </h3>
         </article>
@@ -693,7 +384,59 @@ exports[`Main component renders correctly 1`] = `
               href="movie-page.html"
               onClick={[Function]}
             >
-              Midnight Special
+              Shutter Island
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              width="100%"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+              onClick={[Function]}
+            >
+              Johnny English
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              width="100%"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+              onClick={[Function]}
+            >
+              Mindhunter
             </a>
           </h3>
         </article>
@@ -703,6 +446,7 @@ exports[`Main component renders correctly 1`] = `
       >
         <button
           className="catalog__button"
+          onClick={[Function]}
           type="button"
         >
           Show more

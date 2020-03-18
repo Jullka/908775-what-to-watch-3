@@ -1,5 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {reducer} from "../../reducer/reducer.js";
 import MoviePage from "./movie-page.jsx";
 
 const movieDetails = {
@@ -9,7 +12,7 @@ const movieDetails = {
   releaseDate: 1999,
   poster: `img/we-need-to-talk-about-kevin.jpg`,
   bigPoster: `img/we-need-to-talk-about-kevin.jpg`,
-  ratingScore: `7,4`,
+  ratingScore: 7.4,
   ratingLevel: `Very good`,
   ratingCount: 311,
   runTime: 144,
@@ -41,11 +44,19 @@ const movieDetails = {
   ]
 };
 
+const store = createStore(reducer);
+
 it(`MoviePage renders correctly`, () => {
   const tree = renderer
-    .create(<MoviePage
-      movie={movieDetails}
-    />)
+    .create(
+        <Provider store={store}>
+          <MoviePage
+            movie={movieDetails}
+          />
+        </Provider>,
+        {
+          createNodeMock: () => ({})
+        })
     .toJSON();
 
   expect(tree).toMatchSnapshot();

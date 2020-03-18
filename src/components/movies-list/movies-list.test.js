@@ -1,5 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {reducer} from '../../reducer/reducer.js';
+import {createStore} from "redux";
+import {Provider} from "react-redux";
 import MoviesList from '../movies-list/movies-list.jsx';
 
 const Movies = [
@@ -11,7 +14,7 @@ const Movies = [
     poster: `img/johnny-english.jpg`,
     bigPoster: `img/moonrise-kingdom.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    ratingScore: `8,9`,
+    ratingScore: 8.4,
     ratingLevel: `Very good`,
     ratingCount: 240,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
@@ -26,7 +29,7 @@ const Movies = [
     poster: `img/johnny-english.jpg`,
     bigPoster: `img/moonrise-kingdom.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    ratingScore: `8,9`,
+    ratingScore: 8.4,
     ratingLevel: `Very good`,
     ratingCount: 240,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
@@ -41,7 +44,7 @@ const Movies = [
     poster: `img/johnny-english.jpg`,
     bigPoster: `img/moonrise-kingdom.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    ratingScore: `8,9`,
+    ratingScore: 8.4,
     ratingLevel: `Very good`,
     ratingCount: 240,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
@@ -56,7 +59,7 @@ const Movies = [
     poster: `img/johnny-english.jpg`,
     bigPoster: `img/moonrise-kingdom.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    ratingScore: `8,9`,
+    ratingScore: 8.4,
     ratingLevel: `Very good`,
     ratingCount: 240,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
@@ -71,7 +74,7 @@ const Movies = [
     poster: `img/johnny-english.jpg`,
     bigPoster: `img/moonrise-kingdom.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    ratingScore: `8,9`,
+    ratingScore: 8.4,
     ratingLevel: `Very good`,
     ratingCount: 240,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
@@ -86,7 +89,7 @@ const Movies = [
     poster: `img/johnny-english.jpg`,
     bigPoster: `img/moonrise-kingdom.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    ratingScore: `8,9`,
+    ratingScore: 8.4,
     ratingLevel: `Very good`,
     ratingCount: 240,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
@@ -101,7 +104,7 @@ const Movies = [
     poster: `img/johnny-english.jpg`,
     bigPoster: `img/moonrise-kingdom.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    ratingScore: `8,9`,
+    ratingScore: 8.4,
     ratingLevel: `Very good`,
     ratingCount: 240,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
@@ -116,7 +119,7 @@ const Movies = [
     poster: `img/johnny-english.jpg`,
     bigPoster: `img/moonrise-kingdom.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    ratingScore: `8,9`,
+    ratingScore: 8.4,
     ratingLevel: `Very good`,
     ratingCount: 240,
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
@@ -127,15 +130,20 @@ const Movies = [
 
 const handleMovieClick = () => {};
 
+const store = createStore(reducer);
+
 it(`MoviesList should render correctly`, () => {
   const tree = renderer
-   .create(<MoviesList
-     movies={Movies}
-     onMovieClick={handleMovieClick}
-   />,
-   {
-     createNodeMock: () => ({})
-   }
+   .create(
+       <Provider store={store}>
+         <MoviesList
+           movies={Movies}
+           onMovieClick={handleMovieClick}
+         />
+       </Provider>,
+       {
+         createNodeMock: () => ({})
+       }
    )
    .toJSON();
 

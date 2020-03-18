@@ -1,6 +1,9 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import {reducer, ActionCreator} from '../../reducer/reducer.js';
+import {createStore} from "redux";
+import {Provider} from "react-redux";
 import SmallMovieCard from './small-movie-card';
 
 Enzyme.configure({
@@ -26,16 +29,18 @@ const mockEvent = {
   preventDefault() {},
 };
 
+const store = createStore(reducer);
+
 it(`Should movie card active on mouse hover`, () => {
   const handleHover = jest.fn();
-  const handleMovieClick = () => {};
 
-  const smallMovieCard = shallow(
-      <SmallMovieCard
-        movie={movie}
-        onMovieHover={handleHover}
-        onClick={handleMovieClick}
-      />
+  const smallMovieCard = mount(
+      <Provider store={store}>
+        <SmallMovieCard
+          movie={movie}
+          onMovieHover={handleHover}
+        />
+      </Provider>
   );
 
   const movieCard = smallMovieCard.find(`.small-movie-card`);
@@ -47,18 +52,19 @@ it(`Should movie card active on mouse hover`, () => {
 
 it(`Movie title or poster click passes movie object to callback`, () => {
   const handleHover = () => {};
-  const handleMovieClick = jest.fn();
-  const screen = shallow(
-      <SmallMovieCard
-        movie={movie}
-        onMovieHover={handleHover}
-        onClick={handleMovieClick} />
+  ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
+  const smallMovieCard = mount(
+      <Provider store={store}>
+        <SmallMovieCard
+          movie={movie}
+          onMovieHover={handleHover}/>
+      </Provider>
   );
 
-  const moviePoster = screen.find(`.small-movie-card`);
+  const moviePoster = smallMovieCard.find(`.small-movie-card`);
   moviePoster.simulate(`click`, mockEvent);
 
-  expect(handleMovieClick).toHaveBeenCalledTimes(1);
-  expect(handleMovieClick.mock.calls[0][0]).toMatchObject(movie);
+  expect(ActionCreator.selectMovie).toHaveBeenCalledTimes(1);
+  expect(ActionCreator.selectMovie.mock.calls[0][0]).toMatchObject(movie);
 });
 

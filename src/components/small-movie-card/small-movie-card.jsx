@@ -1,5 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../reducer/reducer.js';
 import VideoPlayer from '../video-player/video-player.jsx';
 
 const VIDEO_PLAY_DELAY = 1000;
@@ -39,8 +41,7 @@ class SmallMovieCard extends PureComponent {
           <a
             className="small-movie-card__link"
             href="movie-page.html"
-            onClick={(evt) => evt.preventDefault()}
-          >
+            onClick={(evt) => evt.preventDefault()}>
             {title}
           </a>
         </h3>
@@ -74,4 +75,14 @@ SmallMovieCard.propTypes = {
   onMovieHover: PropTypes.func.isRequired
 };
 
-export default SmallMovieCard;
+const mapStateToProps = () => ({
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onClick(movie) {
+    dispatch(ActionCreator.selectMovie(movie));
+  }
+});
+
+export {SmallMovieCard};
+export default connect(mapStateToProps, mapDispatchToProps)(SmallMovieCard);
