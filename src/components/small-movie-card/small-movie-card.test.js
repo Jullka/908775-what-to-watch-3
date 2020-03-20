@@ -1,9 +1,9 @@
-import React from "react";
-import renderer from "react-test-renderer";
+import React from 'react';
+import renderer from 'react-test-renderer';
 import {reducer} from '../../reducer/reducer.js';
-import {createStore} from "redux";
-import {Provider} from "react-redux";
-import SmallMovieCard from "./small-movie-card";
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import SmallMovieCard from './small-movie-card';
 
 const movie = {
   title: `The Grand Budapest Hotel`,
@@ -20,8 +20,6 @@ const movie = {
   starring: `John Travolta, Robert Duvall, Stephen Fry and other`
 };
 
-const handleHover = () => {};
-
 const store = createStore(reducer);
 
 it(`SmallMovieCard component renders correctly`, () => {
@@ -29,8 +27,7 @@ it(`SmallMovieCard component renders correctly`, () => {
     .create(
         <Provider store={store}>
           <SmallMovieCard
-            movie={movie}
-            onMovieHover={handleHover}/>
+            movie={movie}/>
         </Provider>,
         {
           createNodeMock: () => ({})

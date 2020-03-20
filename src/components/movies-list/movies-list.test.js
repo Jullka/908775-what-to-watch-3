@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {reducer} from '../../reducer/reducer.js';
-import {createStore} from "redux";
-import {Provider} from "react-redux";
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 import MoviesList from '../movies-list/movies-list.jsx';
 
 const Movies = [

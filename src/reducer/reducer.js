@@ -1,4 +1,4 @@
-import {extend} from "../utils.js";
+import {extend} from '../utils.js';
 import {Movies} from '../mocks/movies.js';
 import {getMoviesByGenre} from '../components/utils/get-movies-by-genre.js';
 
