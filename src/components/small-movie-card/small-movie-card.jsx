@@ -1,42 +1,26 @@
-import React, {PureComponent} from "react";
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/reducer.js';
 import VideoPlayer from '../video-player/video-player.jsx';
 
-const VIDEO_PLAY_DELAY = 1000;
-
-class SmallMovieCard extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isPlaying: false
-    };
-
-    this._isHovered = false;
-  }
-
+export class SmallMovieCard extends PureComponent {
   render() {
-    const {movie, onMovieHover, onClick} = this.props;
+    const {movie, onClick, isActive} = this.props;
     const {title, poster, video} = movie;
-    const {isPlaying} = this.state;
 
     return (
       <article
         className="small-movie-card catalog__movies-card"
-        onMouseOver={() => onMovieHover(movie)}
         onClick={() => onClick(movie)}
         onMouseEnter={() => this._handleMouseEnter()}
-        onMouseLeave={() => this._handleMouseLeave()}
-      >
-        <div className="small-movie-card__image">
-          <VideoPlayer
-            video={video}
-            poster={poster}
-            isPlaying={isPlaying}
-          />
-        </div>
+        onMouseLeave={() => this._handleMouseLeave()}>
+
+        <VideoPlayer
+          video={video}
+          poster={poster}
+          isPlaying={isActive}/>
+
         <h3 className="small-movie-card__title">
           <a
             className="small-movie-card__link"
@@ -49,22 +33,32 @@ class SmallMovieCard extends PureComponent {
     );
   }
 
-  _handleMouseEnter() {
-    this._isHovered = true;
+  componentWillUnmount() {
+    this._clearTimer();
+  }
 
-    setTimeout(() => {
-      if (this._isHovered) {
-        this.setState({isPlaying: true});
-      }
-    }, VIDEO_PLAY_DELAY);
+  _handleMouseEnter() {
+    const {onActiveChange} = this.props;
+
+    this._timerId = setTimeout(() => {
+      onActiveChange(true);
+    }, SmallMovieCard.VIDEO_PLAY_DELAY);
   }
 
   _handleMouseLeave() {
-    this._isHovered = false;
-    this.setState({isPlaying: false});
+    const {onActiveChange} = this.props;
+
+    this._clearTimer();
+    onActiveChange(false);
+  }
+
+  _clearTimer() {
+    if (this._timerId) {
+      clearTimeout(this._timerId);
+    }
   }
 }
-
+SmallMovieCard.VIDEO_PLAY_DELAY = 1000;
 SmallMovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -72,7 +66,8 @@ SmallMovieCard.propTypes = {
     video: PropTypes.string.isRequired
   }).isRequired,
   onClick: PropTypes.func.isRequired,
-  onMovieHover: PropTypes.func.isRequired
+  isActive: PropTypes.bool.isRequired,
+  onActiveChange: PropTypes.func.isRequired
 };
 
 const mapStateToProps = () => ({
@@ -84,5 +79,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export {SmallMovieCard};
 export default connect(mapStateToProps, mapDispatchToProps)(SmallMovieCard);

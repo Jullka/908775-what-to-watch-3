@@ -2,8 +2,8 @@ import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {reducer, ActionCreator} from '../../reducer/reducer.js';
-import {createStore} from "redux";
-import {Provider} from "react-redux";
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 import SmallMovieCard from './small-movie-card';
 
 Enzyme.configure({
@@ -31,33 +31,12 @@ const mockEvent = {
 
 const store = createStore(reducer);
 
-it(`Should movie card active on mouse hover`, () => {
-  const handleHover = jest.fn();
-
-  const smallMovieCard = mount(
-      <Provider store={store}>
-        <SmallMovieCard
-          movie={movie}
-          onMovieHover={handleHover}
-        />
-      </Provider>
-  );
-
-  const movieCard = smallMovieCard.find(`.small-movie-card`);
-
-  movieCard.simulate(`mouseover`, mockEvent);
-  expect(handleHover).toHaveBeenCalledTimes(1);
-  expect(handleHover.mock.calls[0][0]).toMatchObject(movie);
-});
-
 it(`Movie title or poster click passes movie object to callback`, () => {
-  const handleHover = () => {};
   ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
   const smallMovieCard = mount(
       <Provider store={store}>
         <SmallMovieCard
-          movie={movie}
-          onMovieHover={handleHover}/>
+          movie={movie}/>
       </Provider>
   );
 

@@ -1,5 +1,5 @@
-import React from "react";
-import renderer from "react-test-renderer";
+import React from 'react';
+import renderer from 'react-test-renderer';
 import Tab from '../tab/tab.jsx';
 import Tabs from '../tabs/tabs.jsx';
 

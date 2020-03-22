@@ -1,10 +1,10 @@
-import React from "react";
-import Enzyme, {mount} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import React from 'react';
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import {reducer, ActionCreator} from '../../reducer/reducer.js';
-import {createStore} from "redux";
-import {Provider} from "react-redux";
-import Main from "./main.jsx";
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import Main from './main.jsx';
 
 const MOVIES_IN_STORE_COUNT = 8;
 

@@ -1,9 +1,9 @@
-import React from "react";
-import renderer from "react-test-renderer";
+import React from 'react';
+import renderer from 'react-test-renderer';
 import {reducer} from '../../reducer/reducer.js';
-import {createStore} from "redux";
-import {Provider} from "react-redux";
-import GenresList from "./genres-list.jsx";
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import GenresList from './genres-list.jsx';
 
 const Movies = [
   {

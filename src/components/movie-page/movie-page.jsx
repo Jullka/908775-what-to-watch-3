@@ -81,6 +81,7 @@ const MoviePage = (props) => {
                   <p className="movie-card__starring"><strong>Starring: {starring.slice(0, 3).join(`, `)} and other</strong></p>
                 </div>
               </Tab>
+
               <Tab name="Details">
                 <div className="movie-card__text movie-card__row">
                   <div className="movie-card__text-col">

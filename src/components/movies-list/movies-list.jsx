@@ -1,38 +1,25 @@
-import React, {PureComponent} from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
 import {getMoviesLikeThis} from '../utils/get-movies-like-this.js';
+import withActiveState from '../hocs/with-active-state/with-active-state.js';
 
-class MoviesList extends PureComponent {
-  constructor(props) {
-    super(props);
+const SmallMovieCardWrapped = withActiveState(SmallMovieCard);
 
-    this.state = {
-      activeCard: null
-    };
+export const MoviesList = (props) => {
+  const {movies} = props;
 
-    this._handleMovieCardHover = this._handleMovieCardHover.bind(this);
-  }
-
-  render() {
-    const {movies} = this.props;
-
-    return (
-      <div className="catalog__movies-list">
-        {movies.map((movie) => (
-          <SmallMovieCard
-            key={movie.id}
-            movie={movie}
-            onMovieHover={this._handleMovieCardHover}
-          />))}
-      </div>
-    );
-  }
-  _handleMovieCardHover(movie) {
-    this.setState({activeCard: movie});
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {movies.map((movie) =>
+        <SmallMovieCardWrapped
+          key={movie.id}
+          movie={movie}/>
+      )}
+    </div>
+  );
+};
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(
@@ -52,5 +39,4 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = () => ({
 });
 
-export {MoviesList};
 export default connect(mapStateToProps, mapDispatchToProps)(MoviesList);
