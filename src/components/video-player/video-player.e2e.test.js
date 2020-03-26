@@ -12,7 +12,10 @@ const movie = {
   video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
 
-it(`VideoPlayer should have two states: Playing, Paused`, () => {
+it(`VideoPlayer should have Playing state`, () => {
+  jest
+    .spyOn(HTMLMediaElement.prototype, `play`)
+    .mockImplementationOnce(() => {});
   const wrapperPlaying = mount(
       <VideoPlayer
         video={movie.video}
@@ -20,6 +23,12 @@ it(`VideoPlayer should have two states: Playing, Paused`, () => {
         isPlaying={true} />
   );
   expect(wrapperPlaying.state().isPlaying).toBe(true);
+});
+
+it(`VideoPlayer should have Paused state`, () => {
+  jest
+    .spyOn(HTMLMediaElement.prototype, `pause`)
+    .mockImplementationOnce(() => { });
 
   const wrapperPaused = mount(
       <VideoPlayer

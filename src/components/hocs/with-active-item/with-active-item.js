@@ -8,7 +8,7 @@ const withActiveItem = (Component) => {
       this.state = {
         activeItem: 0
       };
-      this._handleActiveTabChange = this._handleActiveItemChange.bind(this);
+      this._handleActiveItemChange = this._handleActiveItemChange.bind(this);
     }
 
     _handleActiveItemChange(activeItem) {

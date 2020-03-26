@@ -14,9 +14,7 @@ it(`VideoPlayer is rendered correctly`, () => {
      poster={Movie.poster}
      video={Movie.video}
    />, {
-     createNodeMock: () => {
-       return {};
-     }
+     createNodeMock: () => ({play: () => {}})
    }).toJSON();
 
   expect(tree).toMatchSnapshot();

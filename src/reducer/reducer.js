@@ -1,11 +1,15 @@
 import {extend} from '../utils.js';
-import {Movies} from '../mocks/movies.js';
+import {Movies, movieDetails} from '../mocks/movies.js';
 import {getMoviesByGenre} from '../components/utils/get-movies-by-genre.js';
+import {GameScreen} from '../components/const.js';
 
 const ALL_GENRES = `All genres`;
 const SHOWN_MOVIES_NUMBER = 8;
 
 const initialState = {
+  gameScreen: GameScreen.MAIN,
+  history: [],
+  movieDetails,
   selectedGenre: ALL_GENRES,
   movies: Movies,
   selectedMovie: null,
@@ -14,11 +18,13 @@ const initialState = {
 };
 
 const ActionType = {
+  CHANGE_GAME_SCREEN: `CHANGE_GAME_SCREEN`,
   CHANGE_GENRE: `CHANGE_GENRE`,
   GET_MOVIES_BY_GENRE: `GET_MOVIES_BY_GENRE`,
   SELECT_MOVIE: `SELECT_MOVIE`,
   SHOW_MORE_MOVIES: `SHOW_MORE_MOVIES`,
-  RESET_SHOW_MORE_MOVIES: `RESET_SHOW_MORE_MOVIES`
+  RESET_SHOW_MORE_MOVIES: `RESET_SHOW_MORE_MOVIES`,
+  ROLLBACK: `ROLLBACK`
 };
 
 const ActionCreator = {
@@ -39,11 +45,22 @@ const ActionCreator = {
   }),
   resetShowMoreMovies: () => ({
     type: ActionType.RESET_SHOW_MORE_MOVIES
+  }),
+  changeGameScreen: (gameScreen) => ({
+    type: ActionType.CHANGE_GAME_SCREEN,
+    payload: gameScreen
+  }),
+  rollback: () => ({
+    type: ActionType.ROLLBACK
   })
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.CHANGE_GAME_SCREEN:
+      return extend(state, {
+        gameScreen: action.payload
+      });
     case ActionType.CHANGE_GENRE:
       return extend(state, {
         selectedGenre: action.payload
@@ -59,12 +76,23 @@ const reducer = (state = initialState, action) => {
         selectedMovie: action.payload
       });
     case ActionType.SHOW_MORE_MOVIES:
-      return extend(state, {shownMoviesNumber: state.shownMoviesNumber + action.payload});
+      return extend(state, {
+        shownMoviesNumber: state.shownMoviesNumber + action.payload
+      });
     case ActionType.RESET_SHOW_MORE_MOVIES:
-      return extend(state, {shownMoviesNumber: SHOWN_MOVIES_NUMBER});
+      return extend(state, {
+        shownMoviesNumber: SHOWN_MOVIES_NUMBER
+      });
+    case ActionType.ROLLBACK:
+      state.history.pop();
+      state.history.pop();
+      return reducer(state, state.history.pop());
 
     default:
-      return state;
+      return reducer(state, {
+        type: ActionType.CHANGE_GAME_SCREEN,
+        payload: GameScreen.MAIN
+      });
   }
 };
 

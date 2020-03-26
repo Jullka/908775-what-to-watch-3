@@ -11,7 +11,7 @@ exports[`Render App 1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="Terminator 2: Judgment Day"
+        alt="The Grand Budapest Hotel"
         src="img/moonrise-kingdom.jpg"
       />
     </div>
@@ -71,7 +71,7 @@ exports[`Render App 1`] = `
           className="movie-card__poster"
         >
           <img
-            alt="Terminator 2: Judgment Day"
+            alt="The Grand Budapest Hotel"
             height="327"
             src="img/johnny-english.jpg"
             width="218"
@@ -83,7 +83,7 @@ exports[`Render App 1`] = `
           <h2
             className="movie-card__title"
           >
-            Terminator 2: Judgment Day
+            The Grand Budapest Hotel
           </h2>
           <p
             className="movie-card__meta"
@@ -91,12 +91,12 @@ exports[`Render App 1`] = `
             <span
               className="movie-card__genre"
             >
-              Thrillers
+              Thriller
             </span>
             <span
               className="movie-card__year"
             >
-              1991
+              2014
             </span>
           </p>
           <div
@@ -104,6 +104,7 @@ exports[`Render App 1`] = `
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg

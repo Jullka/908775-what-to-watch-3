@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/reducer.js';
 import VideoPlayer from '../video-player/video-player.jsx';
+import {GameScreen} from '../const.js';
 
 export class SmallMovieCard extends PureComponent {
   render() {
@@ -76,6 +77,7 @@ const mapStateToProps = () => ({
 const mapDispatchToProps = (dispatch) => ({
   onClick(movie) {
     dispatch(ActionCreator.selectMovie(movie));
+    dispatch(ActionCreator.changeGameScreen(GameScreen.MOVIE_DETAILS));
   }
 });
 

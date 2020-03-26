@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
 import {getMoviesLikeThis} from '../utils/get-movies-like-this.js';
-import withActiveState from '../hocs/with-active-state/with-active-state.js';
+import {withActiveState} from '../hocs/with-active-state/with-active-state.js';
 
 const SmallMovieCardWrapped = withActiveState(SmallMovieCard);
 
