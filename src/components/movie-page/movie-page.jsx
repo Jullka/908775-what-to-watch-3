@@ -1,11 +1,14 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../reducer/reducer.js';
 import Tab from '../tab/tab.jsx';
 import Tabs from '../tabs/tabs.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
+import {GameScreen} from '../const.js';
 
 const MoviePage = (props) => {
-  const {movie} = props;
+  const {movie, onPlayMovie} = props;
   const {title, genre, releaseDate, poster, bigPoster, ratingScore, ratingLevel, ratingCount, text, director, starring, reviews, runTime} = movie;
 
   return (
@@ -43,7 +46,7 @@ const MoviePage = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button className="btn btn--play movie-card__button" type="button" onClick={onPlayMovie}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -182,7 +185,19 @@ MoviePage.propTypes = {
       date: PropTypes.instanceOf(Date).isRequired,
       rating: PropTypes.number.isRequired,
     })).isRequired,
-  }).isRequired
+  }).isRequired,
+  onPlayMovie: PropTypes.func.isRequired
 };
 
-export default MoviePage;
+const mapStateToProps = ({selectedMovie}) => ({
+  movie: selectedMovie
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onPlayMovie() {
+    dispatch(ActionCreator.changeGameScreen(GameScreen.VIDEO_PLAYER));
+  }
+});
+
+export {MoviePage};
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

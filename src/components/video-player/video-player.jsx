@@ -4,16 +4,13 @@ import withVideo from '../hocs/with-video/with-video.js';
 
 const VideoPlayer = (props) => (
   <div className="small-movie-card__image">
-    {props.children}
+    <video width="100%" ref={props.videoRef} />
   </div>
 
 );
 
 VideoPlayer.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node.isRequired
-  ]).isRequired
+  videoRef: PropTypes.shape({current: PropTypes.instanceOf(HTMLMediaElement)}).isRequired
 };
 
 export default withVideo(VideoPlayer);

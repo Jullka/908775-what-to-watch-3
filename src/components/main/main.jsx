@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../reducer/reducer.js';
 import MoviesList from '../movies-list/movies-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 import ShowMore from '../show-more/show-more.jsx';
+import {GameScreen} from '../const.js';
 
-const Main = ({movieDetails}) => {
+const Main = ({movieDetails, onPlayMovie}) => {
   const {title, genre, releaseDate, bigPoster, poster} = movieDetails;
 
   return (
@@ -48,7 +51,7 @@ const Main = ({movieDetails}) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button className="btn btn--play movie-card__button" type="button" onClick={onPlayMovie}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use></use>
                   </svg>
@@ -101,6 +104,19 @@ Main.propTypes = {
     poster: PropTypes.string.isRequired,
     bigPoster: PropTypes.string.isRequired,
   }).isRequired,
+  onPlayMovie: PropTypes.func.isRequired
 };
 
-export default Main;
+export {Main};
+
+const mapStateToProps = ({movieDetails}) => ({
+  movieDetails
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onPlayMovie() {
+    dispatch(ActionCreator.changeGameScreen(GameScreen.VIDEO_PLAYER));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -4,11 +4,15 @@ import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import MoviePage from '../movie-page/movie-page.jsx';
 import Main from '../main/main.jsx';
+import VideoPlayerFull from '../video-player-full/video-player-full.jsx';
+import {GameScreen} from '../const.js';
+import withVideo from '../hocs/with-video/with-video.js';
+
+const VideoPlayerFullWrapper = withVideo(VideoPlayerFull);
 
 class App extends PureComponent {
 
   render() {
-    const {movieDetails} = this.props;
 
     return (
       <BrowserRouter>
@@ -17,8 +21,10 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="//dev-movie-page">
-            <MoviePage
-              movie={movieDetails}/>
+            <MoviePage/>
+          </Route>
+          <Route exact path="/dev-player">
+            <VideoPlayerFullWrapper />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -26,30 +32,22 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {movieDetails, selectedMovie} = this.props;
+    const {gameScreen} = this.props;
 
-    if (selectedMovie) {
-      return <MoviePage
-        movie={selectedMovie}
-      />;
+    switch (gameScreen) {
+      case GameScreen.MOVIE_DETAILS:
+        return <MoviePage />;
+      case GameScreen.VIDEO_PLAYER:
+        return <VideoPlayerFullWrapper />;
+      case GameScreen.MAIN:
+      default:
+        return <Main />;
     }
-
-    return (
-      <Main
-        movieDetails={movieDetails}
-      />
-    );
   }
 }
 
 App.propTypes = {
-  movieDetails: PropTypes.shape({
-    // id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-  }).isRequired,
-
+  gameScreen: PropTypes.string.isRequired,
   selectedMovie: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -59,7 +57,8 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  selectedMovie: state.selectedMovie
+  selectedMovie: state.selectedMovie,
+  gameScreen: state.gameScreen
 });
 
 const mapDispatchToProps = () => ({
