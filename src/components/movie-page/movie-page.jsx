@@ -1,15 +1,17 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/reducer.js';
 import Tab from '../tab/tab.jsx';
 import Tabs from '../tabs/tabs.jsx';
-import MoviesList from '../movies-list/movies-list.jsx';
-import {GameScreen} from '../const.js';
+import {MoviesList} from '../movies-list/movies-list.jsx';
+import {UserBlock} from '../user-block/user-block.jsx';
+import {getSelectedMovie} from '../../reducer/app/selectors.js';
+import {AppRoute} from '../const.js';
+import {history} from '../../routes/history.js';
 
 const MoviePage = (props) => {
   const {movie, onPlayMovie} = props;
-  const {title, genre, releaseDate, poster, bigPoster, ratingScore, ratingLevel, ratingCount, text, director, starring, reviews, runTime} = movie;
+  const {title, genre, releaseDate, poster, bigPoster, ratingScore, ratingLevel, ratingCount, text, director, starring, comments, runTime} = movie;
 
   return (
     <Fragment>
@@ -30,11 +32,8 @@ const MoviePage = (props) => {
               </a>
             </div>
 
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
+            <UserBlock />
+
           </header>
 
           <div className="movie-card__wrap">
@@ -119,7 +118,7 @@ const MoviePage = (props) => {
               <Tab name="Reviews">
                 <div className="movie-card__reviews movie-card__row">
                   <div className="movie-card__reviews-col">
-                    {reviews.map((review) => (
+                    {comments.map((review) => (
                       <div className="review" key={review.id}>
                         <blockquote className="review__quote">
                           <p className="review__text">{review.text}</p>
@@ -178,7 +177,7 @@ MoviePage.propTypes = {
     text: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
+    comments: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
       author: PropTypes.string.isRequired,
@@ -189,13 +188,13 @@ MoviePage.propTypes = {
   onPlayMovie: PropTypes.func.isRequired
 };
 
-const mapStateToProps = ({selectedMovie}) => ({
-  movie: selectedMovie
+const mapStateToProps = (state) => ({
+  movie: getSelectedMovie(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = () => ({
   onPlayMovie() {
-    dispatch(ActionCreator.changeGameScreen(GameScreen.VIDEO_PLAYER));
+    history.push(AppRoute.PLAYER);
   }
 });
 

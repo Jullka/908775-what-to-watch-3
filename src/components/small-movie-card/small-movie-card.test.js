@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import {reducer} from '../../reducer/reducer.js';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import SmallMovieCard from './small-movie-card';
+import SmallMovieCard from './small-movie-card.jsx';
 
 const movie = {
   title: `The Grand Budapest Hotel`,

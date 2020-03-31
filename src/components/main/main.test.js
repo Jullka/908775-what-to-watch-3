@@ -1,9 +1,15 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import {reducer} from '../../reducer/reducer.js';
-import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import Main from './main.jsx';
+import {Router} from 'react-router-dom';
+import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
+import {Main} from './main.jsx';
+import {NameSpace} from '../..//reducer/name-space.js';
+import {AppState, AuthorizationStatus} from '../const.js';
+import {history} from '../../routes/history.js';
+
+const ALL_GENRES = `All genres`;
+const SHOWN_MOVIES_NUMBER = 8;
 
 const movieDetails = {
   id: `044`,
@@ -21,21 +27,36 @@ const movieDetails = {
   starring: `John Travolta, Robert Duvall, Stephen Fry and other`
 };
 
-const store = createStore(reducer);
+const mockStore = configureStore([]);
+const store = mockStore({
+  [NameSpace.DATA]: {
+    movieDetails,
+    movies: []
+  },
+  [NameSpace.APP]: {
+    appState: AppState.READY,
+    selectedGenre: ALL_GENRES,
+    selectedMovie: null,
+    shownMoviesNumber: SHOWN_MOVIES_NUMBER
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    user: null
+  }
+});
 
-it(`Main component renders correctly`, () => {
+it(`Main should render correctly`, () => {
   const tree = renderer
-  .create(
-      <Provider store={store}>
-        <Main
-          movieDetails={movieDetails}
-        />
-      </Provider>,
-      {
-        createNodeMock: () => ({})
-      }
-  )
+    .create(
+        <Provider store={store}>
+          <Router history={history}>
+            <Main />
+          </Router>
+        </Provider>,
+        {
+          createNodeMock: () => ({})
+        }
+    )
     .toJSON();
-
   expect(tree).toMatchSnapshot();
 });

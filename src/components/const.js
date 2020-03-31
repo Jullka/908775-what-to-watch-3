@@ -1,7 +1,31 @@
-const GameScreen = {
-  MAIN: `main`,
-  MOVIE_DETAILS: `movie_details`,
-  VIDEO_PLAYER: `video_player`
+const AppState = {
+  PENDING: `pending`,
+  ERROR: `error`,
+  READY: `ready`
 };
 
-export {GameScreen};
+const MovieScore = {
+  BAD: `Bad`,
+  NORMAL: `Normal`,
+  GOOD: `Good`,
+  VERY_GOOD: `Very good`,
+  AWESOME: `Awesome`
+};
+
+const ErrorCode = {
+  UNAUTHORIZED: 401
+};
+
+const AuthorizationStatus = {
+  NO_AUTH: `NO_AUTH`,
+  AUTH: `AUTH`
+};
+const AppRoute = {
+  SIGN_IN: `/login`,
+  MAIN: `/`,
+  PLAYER: `/player`,
+  FILM: `/film`,
+  MY_LIST: `/mylist`
+};
+
+export {AppState, MovieScore, ErrorCode, AuthorizationStatus, AppRoute};

@@ -1,65 +1,48 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/reducer.js';
+import ActionCreator from '../../reducer/action-creator.js';
 import VideoPlayer from '../video-player/video-player.jsx';
-import {GameScreen} from '../const.js';
+import {AppRoute} from '../const.js';
+import {history} from '../../routes/history.js';
 
-export class SmallMovieCard extends PureComponent {
-  render() {
-    const {movie, onClick, isActive} = this.props;
-    const {title, poster, video} = movie;
+const VIDEO_PLAY_DELAY = 1000;
 
-    return (
-      <article
-        className="small-movie-card catalog__movies-card"
-        onClick={() => onClick(movie)}
-        onMouseEnter={() => this._handleMouseEnter()}
-        onMouseLeave={() => this._handleMouseLeave()}>
+export const SmallMovieCard = (props) => {
+  const {movie, onClick, isActive, onActiveChange, setTimeout, clearTimeout} = props;
+  const {title, poster, video} = movie;
 
-        <VideoPlayer
-          video={video}
-          poster={poster}
-          isPlaying={isActive}/>
-
-        <h3 className="small-movie-card__title">
-          <a
-            className="small-movie-card__link"
-            href="movie-page.html"
-            onClick={(evt) => evt.preventDefault()}>
-            {title}
-          </a>
-        </h3>
-      </article>
-    );
-  }
-
-  componentWillUnmount() {
-    this._clearTimer();
-  }
-
-  _handleMouseEnter() {
-    const {onActiveChange} = this.props;
-
-    this._timerId = setTimeout(() => {
-      onActiveChange(true);
-    }, SmallMovieCard.VIDEO_PLAY_DELAY);
-  }
-
-  _handleMouseLeave() {
-    const {onActiveChange} = this.props;
-
-    this._clearTimer();
+  const _handleMouseEnter = () => setTimeout(() => onActiveChange(true), VIDEO_PLAY_DELAY);
+  const _handleMouseLeave = () => {
+    clearTimeout();
     onActiveChange(false);
-  }
+  };
 
-  _clearTimer() {
-    if (this._timerId) {
-      clearTimeout(this._timerId);
-    }
-  }
-}
-SmallMovieCard.VIDEO_PLAY_DELAY = 1000;
+  return (
+    <article
+      className="small-movie-card catalog__movies-card"
+      onClick={() => onClick(movie)}
+      onMouseEnter={() => _handleMouseEnter()}
+      onMouseLeave={() => _handleMouseLeave()}
+    >
+      <VideoPlayer
+        video={video}
+        poster={poster}
+        isPlaying={isActive}
+      />
+      <h3 className="small-movie-card__title">
+        <a
+          className="small-movie-card__link"
+          href="movie-page.html"
+          onClick={(evt) => evt.preventDefault()}
+        >
+          {title}
+        </a>
+      </h3>
+    </article>
+  );
+};
+
 SmallMovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -68,7 +51,9 @@ SmallMovieCard.propTypes = {
   }).isRequired,
   onClick: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
-  onActiveChange: PropTypes.func.isRequired
+  onActiveChange: PropTypes.func.isRequired,
+  setTimeout: PropTypes.func.isRequired,
+  clearTimeout: PropTypes.func.isRequired
 };
 
 const mapStateToProps = () => ({
@@ -77,7 +62,7 @@ const mapStateToProps = () => ({
 const mapDispatchToProps = (dispatch) => ({
   onClick(movie) {
     dispatch(ActionCreator.selectMovie(movie));
-    dispatch(ActionCreator.changeGameScreen(GameScreen.MOVIE_DETAILS));
+    history.push(AppRoute.FILM);
   }
 });
 

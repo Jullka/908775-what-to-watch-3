@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/reducer.js';
+import {getSelectedMovie} from '../../reducer/app/selectors.js';
+import {getMovieDetails} from '../../reducer/data/selectors.js';
+import {history} from '../../routes/history.js';
 
 export const VideoPlayerFull = (props) => {
   const {videoRef, onPlay, onExit, onFullScreen, progress, time, title, isPlaying} = props;
@@ -49,15 +51,15 @@ VideoPlayerFull.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const {title, runTime, video, bigPoster} = state.selectedMovie ?
-    state.selectedMovie :
-    state.movieDetails;
+  const {title, runTime, video, bigPoster} = getSelectedMovie(state) ?
+    getSelectedMovie(state) :
+    getMovieDetails(state);
   return {title, runTime, video, bigPoster};
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = () => ({
   onExit() {
-    dispatch(ActionCreator.rollback());
+    history.goBack();
   }
 });
 

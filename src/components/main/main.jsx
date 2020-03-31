@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/reducer.js';
-import MoviesList from '../movies-list/movies-list.jsx';
-import GenresList from '../genres-list/genres-list.jsx';
-import ShowMore from '../show-more/show-more.jsx';
-import {GameScreen} from '../const.js';
+import {Link} from 'react-router-dom';
+import {MoviesList} from '../movies-list/movies-list.jsx';
+import {GenresList} from '../genres-list/genres-list.jsx';
+import {ShowMore} from '../show-more/show-more.jsx';
+import {UserBlock} from '../user-block/user-block.jsx';
+import {getMovieDetails} from '../../reducer/data/selectors.js';
+import {AppRoute} from '../const.js';
 
 const Main = ({movieDetails, onPlayMovie}) => {
   const {title, genre, releaseDate, bigPoster, poster} = movieDetails;
@@ -21,18 +23,15 @@ const Main = ({movieDetails, onPlayMovie}) => {
 
         <header className="page-header movie-card__head">
           <div className="logo">
-            <a className="logo__link">
+            <Link to={AppRoute.MAIN} className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
+          <UserBlock />
+
         </header>
 
         <div className="movie-card__wrap">
@@ -109,13 +108,13 @@ Main.propTypes = {
 
 export {Main};
 
-const mapStateToProps = ({movieDetails}) => ({
-  movieDetails
+const mapStateToProps = (state) => ({
+  movieDetails: getMovieDetails(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = () => ({
   onPlayMovie() {
-    dispatch(ActionCreator.changeGameScreen(GameScreen.VIDEO_PLAYER));
+    history.push(AppRoute.PLAYER);
   }
 });
 

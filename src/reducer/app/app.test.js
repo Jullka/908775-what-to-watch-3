@@ -1,6 +1,8 @@
-import {reducer, ActionCreator} from './reducer.js';
+import {reducer, ActionCreator} from './app.js';
+import {AppState} from '../const.js';
 
 const ALL_GENRES = `All genres`;
+const SHOWN_MOVIES_NUMBER = 8;
 
 const Movies = [
   {
@@ -18,7 +20,7 @@ const Movies = [
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
     director: `Ryan Coogler`,
     starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
-    reviews: []
+    comments: []
   },
   {
     id: `2`,
@@ -35,7 +37,7 @@ const Movies = [
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
     director: `Jon Watts`,
     starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
-    reviews: []
+    comments: []
   },
   {
     id: `3`,
@@ -52,22 +54,22 @@ const Movies = [
     text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
     director: `Steven Zaillian`,
     starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`, `Amanda Greever`, `Aidan Gillen`, `Allen Leech`, `Tom Hollander`, `Mike Myers`],
-    reviews: []
+    comments: []
   }
 ];
 
 it(`Reducer should change genre`, () => {
   const initialState = {
+    appState: AppState.READY,
     selectedGenre: ALL_GENRES,
-    movies: Movies,
     selectedMovie: null,
-    history: []
+    shownMoviesNumber: SHOWN_MOVIES_NUMBER,
   };
   const targetState = {
+    appState: AppState.READY,
     selectedGenre: `Comedy`,
-    movies: Movies,
     selectedMovie: null,
-    history: [ActionCreator.changeGenre(`Comedy`)]
+    shownMoviesNumber: SHOWN_MOVIES_NUMBER
   };
 
   expect(reducer(initialState, ActionCreator.changeGenre(`Comedy`)))
@@ -76,16 +78,16 @@ it(`Reducer should change genre`, () => {
 
 it(`Reducer should select movie`, () => {
   const initialState = {
+    appState: AppState.READY,
     selectedGenre: ALL_GENRES,
-    movies: Movies,
     selectedMovie: null,
-    history: []
+    shownMoviesNumber: SHOWN_MOVIES_NUMBER
   };
   const targetState = {
+    appState: AppState.READY,
     selectedGenre: ALL_GENRES,
-    movies: Movies,
     selectedMovie: Movies[0],
-    history: [ActionCreator.selectMovie(Movies[0])]
+    shownMoviesNumber: SHOWN_MOVIES_NUMBER
   };
 
   expect(reducer(initialState, ActionCreator.selectMovie(Movies[0])))

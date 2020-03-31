@@ -1,12 +1,18 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {reducer, ActionCreator} from '../../reducer/reducer.js';
-import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import Main from './main.jsx';
+import ActionCreator from '../../reducer/action-creator.js';
+import {NameSpace} from '../../reducer/name-space.js';
+import configureStore from "redux-mock-store";
+import {AppState, AuthorizationStatus} from '../const.js';
+import {Router} from 'react-router-dom';
+import {history} from '../../routes/history.js';
 
-const MOVIES_IN_STORE_COUNT = 8;
+const MOVIES_IN_STORE_COUNT = 1;
+const ALL_GENRES = `All genres`;
+const SHOWN_MOVIES_NUMBER = 8;
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -32,16 +38,32 @@ const mockEvent = {
   preventDefault() {},
 };
 
-const store = createStore(reducer);
+const mockStore = configureStore([]);
+const store = mockStore({
+  [NameSpace.DATA]: {
+    movieDetails,
+    movies: [movieDetails]
+  },
+  [NameSpace.APP]: {
+    appState: AppState.READY,
+    selectedGenre: ALL_GENRES,
+    selectedMovie: null,
+    shownMoviesNumber: SHOWN_MOVIES_NUMBER
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    user: null
+  }
+});
 
 it(`Should movieCard be clicked`, () => {
   ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
 
   const main = mount(
       <Provider store={store}>
-        <Main
-          movieDetails={movieDetails}
-        />
+        <Router history={history}>
+          <Main />
+        </Router>
       </Provider>
   );
 

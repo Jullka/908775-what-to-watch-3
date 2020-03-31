@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/reducer.js';
+import ActionCreator from '../../reducer/action-creator.js';
+import {getShownMoviesNumber} from '../../reducer/app/selectors.js';
+import {getMoviesByGenre} from '../../reducer/data/selectors.js';
 
 const ShowMore = (props) => {
   const {onClick, isVisible} = props;
@@ -20,8 +22,8 @@ ShowMore.propTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-const mapStateToProps = ({filteredMovies, shownMoviesNumber}) => ({
-  isVisible: filteredMovies.length > shownMoviesNumber
+const mapStateToProps = (state) => ({
+  isVisible: getMoviesByGenre(state).length > getShownMoviesNumber(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

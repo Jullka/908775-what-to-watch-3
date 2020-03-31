@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
-import {getMoviesLikeThis} from '../utils/get-movies-like-this.js';
+import {getSelectedMovie, getShownMoviesNumber} from '../../reducer/app/selectors.js';
+import {getMoviesByGenre} from '../../reducer/data/selectors.js';
+import {getMoviesLikeThis} from '../../reducer/data/selectors.js';
 import {withActiveState} from '../hocs/with-active-state/with-active-state.js';
+import {withTimer} from '../hocs/with-timer/with-timer.js';
 
-const SmallMovieCardWrapped = withActiveState(SmallMovieCard);
+const SmallMovieCardWrapped = withTimer(withActiveState(SmallMovieCard));
 
 export const MoviesList = (props) => {
   const {movies} = props;
@@ -32,8 +35,9 @@ MoviesList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.selectedMovie ?
-    getMoviesLikeThis(state.selectedMovie, state.movies) : state.filteredMovies.slice(0, state.shownMoviesNumber)
+  movies: getSelectedMovie(state) ?
+    getMoviesLikeThis(state) :
+    getMoviesByGenre(state).slice(0, getShownMoviesNumber(state))
 });
 
 const mapDispatchToProps = () => ({

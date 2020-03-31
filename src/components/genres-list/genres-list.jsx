@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/reducer.js';
-import {getGenresList} from '../utils/get-genres-list.js';
+import ActionCreator from '../../reducer/action-creator.js';
+import {getSelectedGenre} from '../../reducer/app/selectors.js';
+import {getGenresList} from '../../reducer/data/selectors.js';
+
 
 const ALL_GENRES = `All genres`;
 const ACTIVE_CLASS = `catalog__genres-item--active`;
@@ -50,16 +52,16 @@ GenresList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.movies,
-  selectedGenre: state.selectedGenre
+  genres: getGenresList(state),
+  selectedGenre: getSelectedGenre(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreSelect(genre) {
     dispatch(ActionCreator.changeGenre(genre));
-    dispatch(ActionCreator.getMoviesByGenre());
     dispatch(ActionCreator.resetShowMoreMovies());
   }
 });
 
+export {GenresList};
 export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

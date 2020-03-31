@@ -1,14 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {reducer} from '../../reducer/reducer.js';
-import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import App from './app.jsx';
+import {App} from './app.jsx';
+import {NameSpace} from '../../reducer/name-space.js';
+import configureStore from 'redux-mock-store';
+import {AppState, AuthorizationStatus} from '../const.js';
+import thunk from 'redux-thunk';
 
-const store = createStore(
-    reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
-);
+const ALL_GENRES = `All genres`;
+const SHOWN_MOVIES_NUMBER = 8;
 
 const movieDetails = {
   id: `044`,
@@ -25,7 +25,7 @@ const movieDetails = {
   text: `Based on a true story about a small-time, self-possessed personal-injury attorney whose greed entangles him in a case that threatens to destroy him. The Woburn Case- which appears straightforward- instead evolves into a labyrinthine lawsuit of epic proportions where truth, if it can be found at all, resides not in the courtroom, but buried deep in a network of deceit and corruptions.`,
   director: `Steven Zaillian`,
   starring: [`John Travolta`, `Robert Duvall`, `Stephen Fry`],
-  reviews: [
+  comments: [
     {
       id: `1`,
       text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
@@ -50,16 +50,42 @@ const movieDetails = {
   ]
 };
 
-const selectedMovie = movieDetails;
+const mockApi = {
+  loadMovies() {
+    return Promise.resolve([movieDetails]);
+  },
+  checkAuthorizationStatus() {
+    return Promise.resolve({
+      "id": 1,
+      "email": `dj-1@ukr.net`,
+      "name": `dj-1`,
+      "avatar_url": `img/1.png`
+    });
+  }
+};
+const mockStore = configureStore([thunk.withExtraArgument(mockApi)]);
+const store = mockStore({
+  [NameSpace.DATA]: {
+    movieDetails,
+    movies: []
+  },
+  [NameSpace.APP]: {
+    appState: AppState.READY,
+    selectedGenre: ALL_GENRES,
+    selectedMovie: null,
+    shownMoviesNumber: SHOWN_MOVIES_NUMBER
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    user: null
+  }
+});
 
 it(`Render App`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <App
-            movieDetails={movieDetails}
-            selectedMovie={selectedMovie}
-          />
+          <App/>
         </Provider>,
         {
           createNodeMock: () => ({})
