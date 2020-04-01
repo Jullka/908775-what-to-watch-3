@@ -9,7 +9,7 @@ const ALL_GENRES = `All genres`;
 
 const getMovies = (state) => state[NameSpace.DATA].movies;
 
-const getMovieDetails = (state) => state[NameSpace.DATA].promoMovie;
+const getMovieDetails = (state) => state[NameSpace.DATA].movieDetails;
 
 const getMovie = (state, movieId) => getMovies(state).filter(({id}) => id === movieId)[0];
 

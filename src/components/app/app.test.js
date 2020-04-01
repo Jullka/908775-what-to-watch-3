@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
-import {App} from './app.jsx';
-import {NameSpace} from '../../reducer/name-space.js';
+import {default as App} from './app.connect.jsx';
+import NameSpace from '../../reducer/name-space.js';
 import configureStore from 'redux-mock-store';
 import {AppState, AuthorizationStatus} from '../const.js';
 import thunk from 'redux-thunk';
@@ -72,7 +72,6 @@ const store = mockStore({
   [NameSpace.APP]: {
     appState: AppState.READY,
     selectedGenre: ALL_GENRES,
-    selectedMovie: null,
     shownMoviesNumber: SHOWN_MOVIES_NUMBER
   },
   [NameSpace.USER]: {

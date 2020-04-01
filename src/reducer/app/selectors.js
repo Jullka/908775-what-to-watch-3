@@ -1,12 +1,22 @@
 import NameSpace from "../name-space.js";
 
-const getSelectedGenre = (state) => state[NameSpace.APP].selectedGenre;
+const NAME_APP = NameSpace.APP;
 
-const getSelectedMovie = (state) => state[NameSpace.APP].selectedMovie;
+const getSelectedGenre = (state) => {
+  return state[NAME_APP].selectedGenre;
+};
 
-const getShownMoviesNumber = (state) => state[NameSpace.APP].shownMoviesNumber;
+const getSelectedMovie = (state) => {
+  return state[NAME_APP].selectedMovie;
+};
 
-const getAppState = (state) => state[NameSpace.APP].appState;
+const getShownMoviesNumber = (state) => {
+  return state[NAME_APP].shownMoviesNumber;
+};
+
+const getAppState = (state) => {
+  return state[NAME_APP].appState;
+};
 
 export {getSelectedGenre, getSelectedMovie, getShownMoviesNumber, getAppState};
 

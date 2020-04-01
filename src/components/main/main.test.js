@@ -4,7 +4,7 @@ import {Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Main} from './main.jsx';
-import {NameSpace} from '../..//reducer/name-space.js';
+import NameSpace from '../..//reducer/name-space.js';
 import {AppState, AuthorizationStatus} from '../const.js';
 import {history} from '../../routes/history.js';
 
@@ -36,7 +36,6 @@ const store = mockStore({
   [NameSpace.APP]: {
     appState: AppState.READY,
     selectedGenre: ALL_GENRES,
-    selectedMovie: null,
     shownMoviesNumber: SHOWN_MOVIES_NUMBER
   },
   [NameSpace.USER]: {
@@ -50,7 +49,9 @@ it(`Main should render correctly`, () => {
     .create(
         <Provider store={store}>
           <Router history={history}>
-            <Main />
+            <Main
+              onPlayMovie={() => {}}
+              onMovieCardClick={() => {}}/>
           </Router>
         </Provider>,
         {

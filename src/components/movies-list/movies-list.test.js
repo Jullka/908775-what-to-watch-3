@@ -1,9 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {reducer} from '../../reducer/reducer.js';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import MoviesList from '../movies-list/movies-list.jsx';
+import {MoviesList} from '../movies-list/movies-list.jsx';
 
 const Movies = [
   {
@@ -130,17 +127,10 @@ const Movies = [
 
 const handleMovieClick = () => {};
 
-const store = createStore(reducer);
-
 it(`MoviesList should render correctly`, () => {
   const tree = renderer
    .create(
-       <Provider store={store}>
-         <MoviesList
-           movies={Movies}
-           onMovieClick={handleMovieClick}
-         />
-       </Provider>,
+       <MoviesList movies={Movies} onMovieCardClick={handleMovieClick} />,
        {
          createNodeMock: () => ({})
        }

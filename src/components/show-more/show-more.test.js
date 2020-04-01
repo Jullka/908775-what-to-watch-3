@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {reducer} from '../../reducer/reducer.js';
+import reducer from '../../reducer/reducer.js';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import ShowMore from './show-more.jsx';
+import {ShowMore} from './show-more.jsx';
 
 const handleClick = () => { };
 const store = createStore(reducer);

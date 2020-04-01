@@ -1,7 +1,13 @@
 import NameSpace from '../name-space.js';
 
-const getUser = (state) => state[NameSpace.USER].user;
+const NAME_SPACE = NameSpace.USER;
 
-const getAuthorizationStatus = (state) => state[NameSpace.USER].authorizationStatus;
+const getUser = (state) => {
+  return state[NAME_SPACE].user;
+};
+
+const getAuthorizationStatus = (state) => {
+  return state[NAME_SPACE].authorizationStatus;
+};
 
 export {getUser, getAuthorizationStatus};

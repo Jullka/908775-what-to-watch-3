@@ -1,10 +1,7 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {reducer, ActionCreator} from '../../reducer/reducer.js';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import SmallMovieCard from './small-movie-card';
+import {SmallMovieCard} from './small-movie-card';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -29,21 +26,18 @@ const mockEvent = {
   preventDefault() {},
 };
 
-const store = createStore(reducer);
-
 it(`Movie title or poster click passes movie object to callback`, () => {
-  ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
+  const onMovieCardClick = jest.fn();
   const smallMovieCard = mount(
-      <Provider store={store}>
-        <SmallMovieCard
-          movie={movie}/>
-      </Provider>
+      <SmallMovieCard
+        movie={movie}
+        onClick={onMovieCardClick} />
   );
 
   const moviePoster = smallMovieCard.find(`.small-movie-card`);
   moviePoster.simulate(`click`, mockEvent);
 
-  expect(ActionCreator.selectMovie).toHaveBeenCalledTimes(1);
-  expect(ActionCreator.selectMovie.mock.calls[0][0]).toMatchObject(movie);
+  expect(onMovieCardClick).toHaveBeenCalledTimes(1);
+  expect(onMovieCardClick.mock.calls[0][0]).toMatchObject(movie);
 });
 

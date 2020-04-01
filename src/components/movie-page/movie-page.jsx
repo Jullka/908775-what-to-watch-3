@@ -1,16 +1,14 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import Tab from '../tab/tab.jsx';
 import Tabs from '../tabs/tabs.jsx';
 import {MoviesList} from '../movies-list/movies-list.jsx';
 import {UserBlock} from '../user-block/user-block.jsx';
-import {getSelectedMovie} from '../../reducer/app/selectors.js';
 import {AppRoute} from '../const.js';
-import {history} from '../../routes/history.js';
 
 const MoviePage = (props) => {
-  const {movie, onPlayMovie} = props;
+  const {movie, onPlayMovie, moviesLikeThis, onMovieCardClick} = props;
   const {title, genre, releaseDate, poster, bigPoster, ratingScore, ratingLevel, ratingCount, text, director, starring, comments, runTime} = movie;
 
   return (
@@ -25,11 +23,11 @@ const MoviePage = (props) => {
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <Link to={AppRoute.MAIN} className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <UserBlock />
@@ -142,7 +140,7 @@ const MoviePage = (props) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <MoviesList />
+          <MoviesList movies={moviesLikeThis} onMovieCardClick={onMovieCardClick}/>
         </section>
 
         <footer className="page-footer">
@@ -185,18 +183,13 @@ MoviePage.propTypes = {
       rating: PropTypes.number.isRequired,
     })).isRequired,
   }).isRequired,
-  onPlayMovie: PropTypes.func.isRequired
+  onPlayMovie: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
+  moviesLikeThis: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired
+  })).isRequired
 };
 
-const mapStateToProps = (state) => ({
-  movie: getSelectedMovie(state)
-});
-
-const mapDispatchToProps = () => ({
-  onPlayMovie() {
-    history.push(AppRoute.PLAYER);
-  }
-});
-
 export {MoviePage};
-export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

@@ -55,17 +55,17 @@ exports[`VideoPlayerFull should render correctly 1`] = `
           width="19"
         >
           <use
-            xlinkHref="#pause"
+            xlinkHref="#play-s"
           />
         </svg>
         <span>
-          Pause
+          Play
         </span>
       </button>
       <div
         className="player__name"
       >
-        The Grand Budapest Hotel
+        Avengers: Infinity War
       </div>
       <button
         className="player__full-screen"

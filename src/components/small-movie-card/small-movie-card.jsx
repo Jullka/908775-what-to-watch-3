@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import ActionCreator from '../../reducer/action-creator.js';
 import VideoPlayer from '../video-player/video-player.jsx';
-import {AppRoute} from '../const.js';
-import {history} from '../../routes/history.js';
 
 const VIDEO_PLAY_DELAY = 1000;
 
-export const SmallMovieCard = (props) => {
+const SmallMovieCard = (props) => {
   const {movie, onClick, isActive, onActiveChange, setTimeout, clearTimeout} = props;
   const {title, poster, video} = movie;
 
@@ -56,14 +52,4 @@ SmallMovieCard.propTypes = {
   clearTimeout: PropTypes.func.isRequired
 };
 
-const mapStateToProps = () => ({
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onClick(movie) {
-    dispatch(ActionCreator.selectMovie(movie));
-    history.push(AppRoute.FILM);
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SmallMovieCard);
+export {SmallMovieCard};

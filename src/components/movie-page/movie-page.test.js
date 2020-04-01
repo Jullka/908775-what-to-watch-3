@@ -2,12 +2,12 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {reducer, ActionCreator} from '../../reducer/reducer.js';
-import MoviePage from './movie-page.jsx';
+import reducer from '../../reducer/reducer.js';
+import {MoviePage} from './movie-page.jsx';
 import {Router} from 'react-router-dom';
 import {history} from '../../routes/history.js';
 
-const movieDetails = {
+const movie = {
   id: `022`,
   title: `Avengers: Infinity War`,
   genre: `Comedy`,
@@ -47,14 +47,18 @@ const movieDetails = {
 };
 
 const store = createStore(reducer);
-store.dispatch(ActionCreator.selectMovie(movieDetails));
 
 it(`MoviePage renders correctly`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
           <Router history={history}>
-            <MoviePage />
+            <MoviePage
+              movie={movie}
+              onPlayMovie={() => {}}
+              onMovieCardClick={() => {}}
+              similarMovies={[]}
+            />
           </Router>
         </Provider>,
         {

@@ -2,9 +2,8 @@ import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
-import Main from './main.jsx';
-import ActionCreator from '../../reducer/action-creator.js';
-import {NameSpace} from '../../reducer/name-space.js';
+import {Main} from './main.jsx';
+import NameSpace from '../../reducer/name-space.js';
 import configureStore from "redux-mock-store";
 import {AppState, AuthorizationStatus} from '../const.js';
 import {Router} from 'react-router-dom';
@@ -47,7 +46,6 @@ const store = mockStore({
   [NameSpace.APP]: {
     appState: AppState.READY,
     selectedGenre: ALL_GENRES,
-    selectedMovie: null,
     shownMoviesNumber: SHOWN_MOVIES_NUMBER
   },
   [NameSpace.USER]: {
@@ -57,18 +55,20 @@ const store = mockStore({
 });
 
 it(`Should movieCard be clicked`, () => {
-  ActionCreator.selectMovie = jest.fn(ActionCreator.selectMovie);
+  const onMovieCardClick = jest.fn();
 
   const main = mount(
       <Provider store={store}>
         <Router history={history}>
-          <Main />
+          <Main
+            onPlayMovie={() => { }}
+            onMovieCardClick={onMovieCardClick}/>
         </Router>
       </Provider>
   );
 
   const movieTitle = main.find(`.small-movie-card__link`);
   movieTitle.forEach((title) => title.simulate(`click`, mockEvent));
-  expect(ActionCreator.selectMovie.mock.calls.length).toBe(MOVIES_IN_STORE_COUNT);
+  expect(onMovieCardClick.mock.calls.length).toBe(MOVIES_IN_STORE_COUNT);
 });
 

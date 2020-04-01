@@ -1,15 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import VideoPlayerFull from './video-player-full.jsx';
-import {Provider} from 'react-redux';
-import configureStore from 'redux-mock-store';
-import {NameSpace} from '../..//reducer/name-space.js';
-import {AppState} from '../const.js';
+import {VideoPlayerFull} from './video-player-full.jsx';
 
-const ALL_GENRES = `All genres`;
-const SHOWN_MOVIES_NUMBER = 8;
-
-const movieDetails = {
+const movie = {
   id: `022`,
   title: `Avengers: Infinity War`,
   genre: `Comedy`,
@@ -25,26 +18,15 @@ const movieDetails = {
   starring: [`Robert Downey Jr.`, `Chris Hemsworth`, `Mark Ruffalo`, `Chris Evans`, `Scarlett Johansson`],
 };
 
-const mockStore = configureStore([]);
-const store = mockStore({
-  [NameSpace.DATA]: {
-    movieDetails,
-    movies: []
-  },
-  [NameSpace.APP]: {
-    appState: AppState.READY,
-    selectedGenre: ALL_GENRES,
-    selectedMovie: null,
-    shownMoviesNumber: SHOWN_MOVIES_NUMBER
-  }
-});
-
 it(`VideoPlayerFull should render correctly`, () => {
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <VideoPlayerFull isPlaying={true}/>
-        </Provider>,
+        <VideoPlayerFull
+          title={movie.title}
+          duration={movie.runTime}
+          src={movie.video}
+          poster={movie.bigPoster}
+          onExit={() => {}}/>,
         {
           createNodeMock: () => ({play: () => {}})
         }

@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {getSelectedMovie} from '../../reducer/app/selectors.js';
-import {getMovieDetails} from '../../reducer/data/selectors.js';
-import {history} from '../../routes/history.js';
 
-export const VideoPlayerFull = (props) => {
+const VideoPlayerFull = (props) => {
   const {videoRef, onPlay, onExit, onFullScreen, progress, time, title, isPlaying} = props;
   return (
     <div className="player">
@@ -50,18 +46,6 @@ VideoPlayerFull.propTypes = {
   onExit: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => {
-  const {title, runTime, video, bigPoster} = getSelectedMovie(state) ?
-    getSelectedMovie(state) :
-    getMovieDetails(state);
-  return {title, runTime, video, bigPoster};
-};
+export {VideoPlayerFull};
 
-const mapDispatchToProps = () => ({
-  onExit() {
-    history.goBack();
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayerFull);
 

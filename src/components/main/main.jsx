@@ -6,11 +6,12 @@ import {MoviesList} from '../movies-list/movies-list.jsx';
 import {GenresList} from '../genres-list/genres-list.jsx';
 import {ShowMore} from '../show-more/show-more.jsx';
 import {UserBlock} from '../user-block/user-block.jsx';
-import {getMovieDetails} from '../../reducer/data/selectors.js';
+import {getMovieDetails, getMoviesByGenre} from '../../reducer/data/selectors.js';
 import {AppRoute} from '../const.js';
+import {getShownMoviesNumber} from '../../reducer/app/selectors.js';
 
-const Main = ({movieDetails, onPlayMovie}) => {
-  const {title, genre, releaseDate, bigPoster, poster} = movieDetails;
+const Main = ({movieDetails, movies, onPlayMovie, onMovieCardClick}) => {
+  const {id, title, genre, releaseDate, bigPoster, poster} = movieDetails;
 
   return (
     <div className="main">
@@ -50,7 +51,8 @@ const Main = ({movieDetails, onPlayMovie}) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button" onClick={onPlayMovie}>
+                <button className="btn btn--play movie-card__button" type="button"
+                  onClick={() => onPlayMovie(id)}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use></use>
                   </svg>
@@ -72,7 +74,7 @@ const Main = ({movieDetails, onPlayMovie}) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenresList />
-          <MoviesList />
+          <MoviesList movies={movies} onMovieCardClick={onMovieCardClick} />
           <ShowMore />
 
         </section>
@@ -97,25 +99,30 @@ const Main = ({movieDetails, onPlayMovie}) => {
 
 Main.propTypes = {
   movieDetails: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.number.isRequired,
     poster: PropTypes.string.isRequired,
     bigPoster: PropTypes.string.isRequired,
   }).isRequired,
-  onPlayMovie: PropTypes.func.isRequired
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired
+  })).isRequired,
+  onPlayMovie: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired
 };
 
 export {Main};
 
 const mapStateToProps = (state) => ({
-  movieDetails: getMovieDetails(state)
+  movieDetails: getMovieDetails(state),
+  movies: getMoviesByGenre(state).slice(0, getShownMoviesNumber(state))
 });
 
 const mapDispatchToProps = () => ({
-  onPlayMovie() {
-    history.push(AppRoute.PLAYER);
-  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
