@@ -20,6 +20,7 @@ const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
   AUTH: `AUTH`
 };
+
 const AppRoute = {
   SIGN_IN: `/login`,
   MAIN: `/`,

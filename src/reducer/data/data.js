@@ -64,4 +64,3 @@ const reducer = (state = initialState, action) => {
 
 export {reducer, ActionType, Operation, ActionCreator};
 export default ActionCreator;
-// export default Object.assign({}, ActionCreator);

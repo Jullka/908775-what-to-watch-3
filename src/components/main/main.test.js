@@ -4,7 +4,7 @@ import {Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Main} from './main.jsx';
-import NameSpace from '../..//reducer/name-space.js';
+import {NameSpace} from '../..//reducer/name-space.js';
 import {AppState, AuthorizationStatus} from '../const.js';
 import {history} from '../../routes/history.js';
 

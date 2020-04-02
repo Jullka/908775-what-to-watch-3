@@ -68,6 +68,5 @@ const Operation = {
   }
 };
 
-// export default Object.assign({}, ActionCreator);
 export {ActionType, Operation, ActionCreator, reducer};
 export default ActionCreator;

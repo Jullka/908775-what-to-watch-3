@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import {default as App} from './app.connect.jsx';
-import NameSpace from '../../reducer/name-space.js';
+import {NameSpace} from '../../reducer/name-space.js';
 import configureStore from 'redux-mock-store';
 import {AppState, AuthorizationStatus} from '../const.js';
 import thunk from 'redux-thunk';

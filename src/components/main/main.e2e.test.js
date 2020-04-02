@@ -3,7 +3,7 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import {Main} from './main.jsx';
-import NameSpace from '../../reducer/name-space.js';
+import {NameSpace} from '../../reducer/name-space.js';
 import configureStore from "redux-mock-store";
 import {AppState, AuthorizationStatus} from '../const.js';
 import {Router} from 'react-router-dom';
