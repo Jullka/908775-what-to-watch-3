@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {App} from './app.jsx';
-import {getAppState} from '../../reducer/app/selectors.js';
+import {getAppState} from '../../reducer/data/selectors.js';
 import {Operation as DataOperation} from '../../reducer/data/data.js';
 import {Operation as UserOperation} from '../../reducer/user/user.js';
 import {createRoute} from '../../routes/create-route.js';

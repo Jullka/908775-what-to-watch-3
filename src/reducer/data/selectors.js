@@ -1,5 +1,4 @@
 import {createSelector} from 'reselect';
-import {getSelectedGenre} from '../app/selectors.js';
 import {NameSpace} from '../name-space.js';
 
 const MAX_GENRES_COUNT = 9;
@@ -10,6 +9,12 @@ const NAME_SPACE = NameSpace.DATA;
 const getMovies = (state) => state[NAME_SPACE].movies;
 
 const getMovieDetails = (state) => state[NAME_SPACE].movieDetails;
+
+const getShownMoviesNumber = (state) => state[NAME_SPACE].shownMoviesNumber;
+
+const getAppState = (state) => state[NAME_SPACE].appState;
+
+const getSelectedGenre = (state) => state[NAME_SPACE].selectedGenre;
 
 const getMovie = (state, movieId) => getMovies(state).filter(({id}) => id === movieId)[0];
 
@@ -30,6 +35,6 @@ const getMoviesByGenre = createSelector(
 );
 
 
-export {getGenresList, getMoviesLikeThis, getMovies, getMovie, getMovieDetails, getMoviesByGenre};
+export {getGenresList, getMoviesLikeThis, getMovies, getMovie, getMovieDetails, getMoviesByGenre, getSelectedGenre, getShownMoviesNumber, getAppState};
 
 

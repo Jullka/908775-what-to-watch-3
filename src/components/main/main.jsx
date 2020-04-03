@@ -6,9 +6,9 @@ import {MoviesList} from '../movies-list/movies-list.jsx';
 import {GenresList} from '../genres-list/genres-list.jsx';
 import {ShowMore} from '../show-more/show-more.jsx';
 import {UserBlock} from '../user-block/user-block.jsx';
-import {getMovieDetails, getMoviesByGenre} from '../../reducer/data/selectors.js';
+import {getMovieDetails, getMoviesByGenre, getShownMoviesNumber} from '../../reducer/data/selectors.js';
 import {AppRoute} from '../const.js';
-import {getShownMoviesNumber} from '../../reducer/app/selectors.js';
+// import {} from '../../reducer/app/selectors.js';
 
 const Main = ({movieDetails, movies, onPlayMovie, onMovieCardClick}) => {
   const {id, title, genre, releaseDate, bigPoster, poster} = movieDetails;

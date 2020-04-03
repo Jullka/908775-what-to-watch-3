@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ActionCreator from '../../reducer/action-creator.js';
-import {getShownMoviesNumber} from '../../reducer/app/selectors.js';
-import {getMoviesByGenre} from '../../reducer/data/selectors.js';
+// import {} from '../../reducer/app/selectors.js';
+import {getMoviesByGenre, getShownMoviesNumber} from '../../reducer/data/selectors.js';
 
 const ShowMore = (props) => {
   const {onClick, isVisible} = props;

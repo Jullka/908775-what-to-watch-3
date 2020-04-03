@@ -6,7 +6,7 @@ import {MoviePage} from '../movie-page/movie-page.jsx';
 import {Main} from '../main/main.jsx';
 import {VideoPlayerFull} from '../video-player-full/video-player-full.jsx';
 import {SignIn} from '../sign-in/sign-in.jsx';
-import {PrivateRoute} from '../private-route/private-route.jsx';
+// import {PrivateRoute} from '../private-route/private-route.jsx';
 import {AppState, AppRoute} from '../const.js';
 import withVideo from '../hocs/with-video/with-video.js';
 // import {getAppState} from '../../reducer/app/selectors.js';
@@ -33,7 +33,6 @@ class App extends PureComponent {
       default:
         return null;
       case AppState.ERROR:
-        return <h1>Something bad just happend!</h1>;
       case AppState.READY:
 
         return (
@@ -72,8 +71,8 @@ class App extends PureComponent {
                 />;
               }}/>
 
-              <PrivateRoute exact path={AppRoute.MY_LIST}
-                render={() => <h1>My secret list!</h1>}/>
+              {/* <PrivateRoute exact path={AppRoute.MY_LIST}
+                render={() => <h1>My secret list!</h1>}/> */}
             </Switch>
           </Router>
         );

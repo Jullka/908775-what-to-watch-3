@@ -1,18 +1,18 @@
-import {NameSpace} from '../name-space.js';
+// import {NameSpace} from '../name-space.js';
 
-const NAME_APP = NameSpace.APP;
+// const NAME_SPACE = NameSpace.APP;
 
-const getSelectedGenre = (state) => {
-  return state[NAME_APP].selectedGenre;
-};
+// const getSelectedGenre = (state) => {
+//   return state[NAME_SPACE].selectedGenre;
+// };
 
-const getShownMoviesNumber = (state) => {
-  return state[NAME_APP].shownMoviesNumber;
-};
+// const getShownMoviesNumber = (state) => {
+//   return state[NAME_SPACE].shownMoviesNumber;
+// };
 
-const getAppState = (state) => {
-  return state[NAME_APP].appState;
-};
+// const getAppState = (state) => {
+//   return state[NAME_SPACE].appState;
+// };
 
-export {getSelectedGenre, getShownMoviesNumber, getAppState};
+// export {getSelectedGenre, getShownMoviesNumber, getAppState};
 

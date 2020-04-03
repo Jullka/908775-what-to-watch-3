@@ -68,5 +68,5 @@ const Operation = {
   }
 };
 
-export {ActionType, Operation, ActionCreator, reducer};
+export {ActionType, Operation, reducer};
 export default ActionCreator;

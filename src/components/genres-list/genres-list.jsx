@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ActionCreator from '../../reducer/action-creator.js';
-import {getSelectedGenre} from '../../reducer/app/selectors.js';
-import {getGenresList} from '../../reducer/data/selectors.js';
+// import {} from '../../reducer/app/selectors.js';
+import {getGenresList, getSelectedGenre} from '../../reducer/data/selectors.js';
 
 
 const ALL_GENRES = `All genres`;
