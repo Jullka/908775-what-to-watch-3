@@ -42,7 +42,7 @@ MoviesList.propTypes = {
         video: PropTypes.string,
         runtime: PropTypes.string,
         rating: PropTypes.number,
-        votes: PropTypes.number,
+        score: PropTypes.number,
         director: PropTypes.string,
         description: PropTypes.string,
         starring: PropTypes.arrayOf(PropTypes.string),

@@ -39,6 +39,7 @@ it(`Main should render correctly`, () => {
               onMovieHover={() => {}}
               onItemEnter={() => { }}
               onItemLeave={() => { }}
+              onMovieFavoriteStatusClick={() => { }}
               activeItem={null}/>
           </BrowserRouter>
         </Provider>)

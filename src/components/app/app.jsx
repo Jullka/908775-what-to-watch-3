@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import MoviePage from '../movie-page/movie-page.jsx';
 import Main from '../main/main.jsx';
@@ -8,11 +8,12 @@ import withActiveItem from '../hocs/with-active-item/with-active-item.jsx';
 import {getMovieDetails, getMoviesByGenre} from '../../reducer/data/selectors.js';
 import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
 import {Operation as UserOperation} from '../../reducer/user/user.js';
-import {Operation as CommentsOperation} from '../../reducer/review/review.js';
+import {Operation as DataOperation} from '../../reducer/data/data.js';
 import SignIn from '../sign-in/sign-in.jsx';
-import AddReview from '../add-review/add-review.jsx';
+// import AddReview from '../add-review/add-review.jsx';
 import withErrorItem from '../hocs/with-error-item/with-error-item.jsx';
 import {AuthorizationStatus} from '../const.js';
+import history from '../../history.js';
 
 const MoviePageWrapped = withActiveItem(MoviePage);
 const MainWrapped = withActiveItem(Main);
@@ -36,7 +37,7 @@ class App extends PureComponent {
   }
 
   _renderMainPage() {
-    const {movies, film, authorizationStatus} = this.props;
+    const {movies, film, authorizationStatus, changeFavoriteMovieStatus} = this.props;
     const {showMovieDetails} = this.state;
 
     if (!showMovieDetails) {
@@ -46,6 +47,7 @@ class App extends PureComponent {
           film={film}
           onMouseClick={this._clickHandler.bind(this)}
           onMovieHover={movieHoverHandler}
+          onMovieFavoriteStatusClick={changeFavoriteMovieStatus}
         />
       );
     }
@@ -56,6 +58,7 @@ class App extends PureComponent {
           authorizationStatus={authorizationStatus}
           movies={movies}
           film={film}
+          onMovieFavoriteStatusClick={changeFavoriteMovieStatus}
         />
       );
     }
@@ -64,36 +67,22 @@ class App extends PureComponent {
   }
 
   render() {
-    const {film, login, authorizationStatus, sendComment} = this.props;
+    const {login, authorizationStatus} = this.props;
 
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
           <Route exact path="/">
             {this._renderMainPage()}
           </Route>
-          <Route exact path="/dev-review">
-            <AddReview
-              filmId={1}
-              onSubmit={sendComment}
-              film={film}/>
+          <Route exact path="/login" render={() => {
+            return (authorizationStatus === AuthorizationStatus.AUTH) ?
+              <Redirect to="/" /> :
+              <SignInWrapped onSubmit={login} />;
+          }}>
           </Route>
-          <Route exact path="/dev-film">
-            <MainWrapped
-              film={film}/>
-          </Route>
-          <Route exact path="/auth-dev" render={() => {
-            if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-              return <SignInWrapped
-                onSubmit={login}/>;
-            }
-            if (authorizationStatus === AuthorizationStatus.AUTH) {
-              return this._renderMainPage();
-            }
-            return null;
-          }} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
@@ -101,7 +90,7 @@ class App extends PureComponent {
 App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
-  sendComment: PropTypes.func.isRequired,
+  changeFavoriteMovieStatus: PropTypes.func.isRequired,
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
@@ -114,7 +103,7 @@ App.propTypes = {
         video: PropTypes.string,
         runtime: PropTypes.string,
         rating: PropTypes.number,
-        votes: PropTypes.number,
+        score: PropTypes.number,
         director: PropTypes.string,
         description: PropTypes.string,
         starring: PropTypes.arrayOf(PropTypes.string),
@@ -133,7 +122,7 @@ App.propTypes = {
     video: PropTypes.string,
     runtime: PropTypes.string,
     rating: PropTypes.number,
-    votes: PropTypes.number,
+    score: PropTypes.number,
     director: PropTypes.string,
     description: PropTypes.string,
     starring: PropTypes.arrayOf(PropTypes.string),
@@ -151,8 +140,8 @@ const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
   },
-  sendComment(authData, filmId) {
-    dispatch(CommentsOperation.sendComment(authData, filmId));
+  changeFavoriteMovieStatus(filmId, status) {
+    dispatch(DataOperation.changeFavoriteStatus(filmId, status));
   },
 });
 

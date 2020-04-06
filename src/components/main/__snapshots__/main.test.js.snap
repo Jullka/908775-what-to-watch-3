@@ -51,7 +51,7 @@ exports[`Main should render correctly 1`] = `
         className="user-block"
       >
         <a
-          href="/auth-dev"
+          href="/login"
           onClick={[Function]}
         >
           Sign In
@@ -69,7 +69,7 @@ exports[`Main should render correctly 1`] = `
           onClick={[Function]}
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Terminator 2: Judgment Day"
             height="327"
             src="img/johnny-english.jpg"
             width="218"
@@ -119,14 +119,17 @@ exports[`Main should render correctly 1`] = `
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
-                height="20"
-                viewBox="0 0 19 20"
-                width="19"
+                height="14"
+                viewBox="0 0 18 14"
+                width="18"
               >
-                <use />
+                <use
+                  xlinkHref="#in-list"
+                />
               </svg>
               <span>
                 My list

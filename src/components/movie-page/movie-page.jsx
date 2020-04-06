@@ -12,21 +12,21 @@ import withActiveItem from '../hocs/with-active-item/with-active-item.jsx';
 const MoviesListWrapped = withActiveItem(MoviesList);
 const TabsWrapped = withActiveItem(Tabs);
 
-const SAME_GENRE_MOVIES_MAX_LENGTH = 4;
+const MOVIES_LIKE_THIS_MAX_LENGTH = 4;
 
 class MoviePage extends PureComponent {
   constructor(props) {
     super(props);
   }
 
-  getSameGenreMovies() {
+  getMoviesLikeThis() {
     const {movies, film} = this.props;
     const {genre} = film;
-    return (movies.filter((movie) => movie.genre === genre)).slice(0, SAME_GENRE_MOVIES_MAX_LENGTH);
+    return (movies.filter((movie) => movie.genre === genre)).slice(0, MOVIES_LIKE_THIS_MAX_LENGTH);
   }
 
   render() {
-    const {film, onItemEnter, onItemLeave, activeItem, authorizationStatus, user} = this.props;
+    const {film, onItemEnter, onItemLeave, activeItem, authorizationStatus, user, onMovieFavoriteStatusClick} = this.props;
     const {title, background, genre, releaseDate, poster} = film;
 
     return (
@@ -79,20 +79,29 @@ class MoviePage extends PureComponent {
                     onClick={() => {
                       onItemEnter(film);
                     }}
-                    type="button"
-                  >
+                    type="button">
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"></use>
                     </svg>
                     <span>Play</span>
                   </button>
-                  <button className="btn btn--list movie-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"></use>
-                    </svg>
+                  <button
+                    className="btn btn--list movie-card__button"
+                    type="button"
+                    onClick={() => {
+                      onMovieFavoriteStatusClick(film.id, +!film.favorite);
+                    }}>
+                    {film.favorite ?
+                      <svg viewBox="0 0 19 20" width="19" height="20">
+                        <use xlinkHref="#add"></use>
+                      </svg> :
+                      <svg viewBox="0 0 18 14" width="18" height="14">
+                        <use xlinkHref="#in-list"></use>
+                      </svg>
+                    }
                     <span>My list</span>
                   </button>
-                  {authorizationStatus === `AUTH` ? <a href="/dev-review" className="btn movie-card__button">Add review</a> : null}
+                  {authorizationStatus === `AUTH` ? <a href="/login" className="btn movie-card__button">Add review</a> : null}
                 </div>
               </div>
             </div>
@@ -118,7 +127,7 @@ class MoviePage extends PureComponent {
             <h2 className="catalog__title">More like this</h2>
 
             <MoviesListWrapped
-              movies={this.getSameGenreMovies()}
+              movies={this.getMoviesLikeThis()}
               onMovieHover={() => { }}
             />
           </section>
@@ -146,6 +155,7 @@ class MoviePage extends PureComponent {
 MoviePage.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
+  onMovieFavoriteStatusClick: PropTypes.func.isRequired,
 
   film: PropTypes.shape({
     id: PropTypes.string,
@@ -158,10 +168,11 @@ MoviePage.propTypes = {
     video: PropTypes.string,
     runtime: PropTypes.string,
     rating: PropTypes.number,
-    votes: PropTypes.number,
+    score: PropTypes.number,
     director: PropTypes.string,
     description: PropTypes.string,
     starring: PropTypes.arrayOf(PropTypes.string),
+    favorite: PropTypes.bool,
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
           text: PropTypes.string,
@@ -188,10 +199,11 @@ MoviePage.propTypes = {
         video: PropTypes.string,
         runtime: PropTypes.string,
         rating: PropTypes.number,
-        votes: PropTypes.number,
+        score: PropTypes.number,
         director: PropTypes.string,
         description: PropTypes.string,
         starring: PropTypes.arrayOf(PropTypes.string),
+        favorite: PropTypes.bool,
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
               text: PropTypes.string,

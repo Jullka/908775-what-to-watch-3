@@ -34,10 +34,10 @@ class AddReview extends PureComponent {
   handleChange(e) {
     switch (true) {
       case e.target.value.length < MESSAGE_LIMIT.min:
-        this.props.changeSendStatusText(`Ваше сообщение менее 50 символов`);
+        this.props.changeSendStatusText(`Ваше сообщение менее ${MESSAGE_LIMIT.min} символов`);
         break;
       case e.target.value.length > MESSAGE_LIMIT.max:
-        this.props.changeSendStatusText(`Ваше сообщение больше 400 символов`);
+        this.props.changeSendStatusText(`Ваше сообщение больше ${MESSAGE_LIMIT.max} символов`);
         break;
       default:
         this.props.changeSendStatusText(``);
@@ -202,7 +202,7 @@ AddReview.propTypes = {
     video: PropTypes.string,
     runtime: PropTypes.string,
     rating: PropTypes.number,
-    votes: PropTypes.number,
+    score: PropTypes.number,
     director: PropTypes.string,
     description: PropTypes.string,
     starring: PropTypes.arrayOf(PropTypes.string),

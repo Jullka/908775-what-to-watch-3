@@ -10,10 +10,11 @@ const Adapter = (item) => {
     video: item.preview_video_link,
     runtime: `${item.run_time}`,
     rating: item.rating,
-    votes: item.scores_count,
+    score: item.scores_count,
     director: item.director,
     description: item.description,
     starring: item.starring,
+    favorite: item.is_favorite,
   };
 };
 

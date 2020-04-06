@@ -64,6 +64,7 @@ const Operation = {
       .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setUser(response.data.avatar_url));
+        window.location = `/`;
       })
       .catch((err) => {
         throw err;
