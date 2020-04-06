@@ -1,19 +1,15 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {reducer} from '../../reducer/reducer.js';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import ShowMore from './show-more.jsx';
-
-const handleClick = () => { };
-const store = createStore(reducer);
+import {ShowMore} from './show-more.jsx';
+import {films} from '../../mocks/test-mocks.js';
 
 it(`ShowMore should render correctly`, () => {
   const tree = renderer
   .create(
-      <Provider store={store}>
-        <ShowMore isVisible={true} onClick={handleClick} />
-      </Provider>
+      <ShowMore
+        moviesByGenre={films}
+        moviesCount={1}
+        onShowMoreButtonClick={() => {}}/>
   )
     .toJSON();
   expect(tree).toMatchSnapshot();

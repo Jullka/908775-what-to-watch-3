@@ -2,41 +2,74 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
-import {getMoviesLikeThis} from '../utils/get-movies-like-this.js';
-import {withActiveState} from '../hocs/with-active-state/with-active-state.js';
+import {getMoviesCount, getMoviesByGenre} from '../../reducer/data/selectors.js';
 
-const SmallMovieCardWrapped = withActiveState(SmallMovieCard);
+class MoviesList extends React.PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-export const MoviesList = (props) => {
-  const {movies} = props;
+  render() {
+    const {movies, moviesCount, onItemEnter, onItemLeave} = this.props;
 
-  return (
-    <div className="catalog__movies-list">
-      {movies.map((movie) =>
-        <SmallMovieCardWrapped
-          key={movie.id}
-          movie={movie}/>
-      )}
-    </div>
-  );
-};
+    return (
+      <div className="catalog__movies-list">
+        {movies.slice(0, moviesCount).map((movie) => (
+          <SmallMovieCard
+            key={movie.id}
+            title={movie.title}
+            image={movie.image}
+            video={movie.video}
+            onMovieHover={onItemEnter}
+            onMovieLeave={onItemLeave}
+          />
+        ))}
+      </div>
+    );
+  }
+}
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        poster: PropTypes.string.isRequired,
-      })
-  ).isRequired
+        id: PropTypes.string,
+        name: PropTypes.string,
+        genre: PropTypes.string,
+        releaseDate: PropTypes.number,
+        image: PropTypes.string,
+        poster: PropTypes.string,
+        background: PropTypes.string,
+        video: PropTypes.string,
+        runtime: PropTypes.string,
+        rating: PropTypes.number,
+        votes: PropTypes.number,
+        director: PropTypes.string,
+        description: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              rating: PropTypes.number.isRequired,
+              date: PropTypes.string.isRequired,
+              author: PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                name: PropTypes.string.isRequired,
+              }).isRequired,
+              text: PropTypes.string.isRequired,
+            })),
+      })),
+
+  moviesCount: PropTypes.number.isRequired,
+
+  onMovieHover: PropTypes.func.isRequired,
+  onItemEnter: PropTypes.func.isRequired,
+  onItemLeave: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.selectedMovie ?
-    getMoviesLikeThis(state.selectedMovie, state.movies) : state.filteredMovies.slice(0, state.shownMoviesNumber)
+  movies: getMoviesByGenre(state),
+  moviesCount: getMoviesCount(state),
 });
 
-const mapDispatchToProps = () => ({
-});
+export {MoviesList};
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesList);
+export default connect(mapStateToProps)(MoviesList);

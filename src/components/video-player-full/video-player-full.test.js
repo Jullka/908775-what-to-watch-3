@@ -1,22 +1,19 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import VideoPlayerFull from './video-player-full.jsx';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import {reducer} from '../../reducer/reducer.js';
-
-const store = createStore(reducer);
+import {filmDetails} from '../../mocks/test-mocks.js';
 
 it(`VideoPlayerFull should render correctly`, () => {
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <VideoPlayerFull isPlaying={true}/>
-        </Provider>,
+        <VideoPlayerFull
+          film={filmDetails}
+          onItemLeave={() => {}}/>,
         {
-          createNodeMock: () => ({play: () => {}})
-        }
-    )
+          createNodeMock: () => {
+            return {};
+          }
+        })
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

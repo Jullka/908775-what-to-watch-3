@@ -1,21 +1,30 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import VideoPlayer from './video-player.jsx';
-
-const Movie = {
-  poster: `img/bohemian-rhapsody.jpg`,
-  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-};
+import PropTypes from 'prop-types';
+import {promoFilm} from '../../mocks/test-mocks.js';
 
 it(`VideoPlayer is rendered correctly`, () => {
   const tree = renderer
    .create(<VideoPlayer
+     key={promoFilm.id}
      isPlaying={false}
-     poster={Movie.poster}
-     video={Movie.video}
-   />, {
-     createNodeMock: () => ({play: () => {}})
+     poster={promoFilm.imgSrc}
+     src={promoFilm.src}
+   >
+     children=testIntance.children
+   </VideoPlayer>, {
+     createNodeMock: () => {
+       return {};
+     }
    }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
+
+VideoPlayer.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+};

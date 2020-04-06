@@ -1,65 +1,107 @@
-import React from 'react';
+import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/reducer.js';
-import {getGenresList} from '../utils/get-genres-list.js';
+import {ActionCreator} from '../../reducer/data/data.js';
+import {getSelectedGenre, getMovies} from '../../reducer/data/selectors.js';
 
 const ALL_GENRES = `All genres`;
-const ACTIVE_CLASS = `catalog__genres-item--active`;
+const ACTIVE_GENRE_ELEMENT = `catalog__genres-item--active`;
+const GENRE_LIST_MAX_LENGTH = 9;
+const DEFAULT_MOVIE_COUNT = 8;
 
-const GenresList = (props) => {
-  const {movies, selectedGenre, onGenreSelect} = props;
+class GenresList extends PureComponent {
 
-  const handleGenreClick = (evt, genre) => {
-    evt.preventDefault();
-    if (genre !== selectedGenre) {
-      onGenreSelect(genre);
-    }
-  };
+  render() {
+    const {movies, onGenreElementClick, onItemEnter, selectedGenre} = this.props;
 
-  return (
-    <ul className="catalog__genres-list">
-      <li
-        className={`catalog__genres-item ${selectedGenre === ALL_GENRES ? ACTIVE_CLASS : ``}`}
-        onClick={(evt) => handleGenreClick(evt, ALL_GENRES)}
-      >
-        <a href="#" className="catalog__genres-link">{ALL_GENRES}</a>
-      </li>
-      {getGenresList(movies).map((genre, i) => (
-        <li
-          key={genre + i}
-          className={`catalog__genres-item ${selectedGenre === genre ? ACTIVE_CLASS : ``}`}
-          onClick={(evt) => handleGenreClick(evt, genre)}
-        >
-          <a href="#" className="catalog__genres-link">{genre}</a>
-        </li>
-      ))}
-    </ul>
-  );
-};
+    const returnSelectedGenres = () => {
+      let selectedGenres = [ALL_GENRES];
+      movies.map((movie) => {
+        if (!selectedGenres.includes(movie.genre)) {
+          selectedGenres.push(movie.genre);
+        }
+      });
+
+      return selectedGenres;
+    };
+
+    const genresList = returnSelectedGenres().slice(0, GENRE_LIST_MAX_LENGTH);
+
+    const returnSelectedGenreElement = (genre) => {
+      return selectedGenre === genre ? ACTIVE_GENRE_ELEMENT : ``;
+    };
+
+    const returnGenresList = () => {
+      const genresElements = [];
+      for (const genre of genresList) {
+        const genreFragment =
+          <Fragment key={genre + genresList.indexOf(genre)}>
+            <li className={`catalog__genres-item ${returnSelectedGenreElement(genre)}`}>
+              <a
+                href="#"
+                className="catalog__genres-link"
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  onGenreElementClick(genre);
+                  onItemEnter(genre);
+                }}
+              >{genre}</a>
+            </li>
+          </Fragment>;
+        genresElements.push(genreFragment);
+      }
+      return genresElements;
+    };
+
+    return (
+      <Fragment>
+        <ul className="catalog__genres-list">
+          {returnGenresList()}
+        </ul>
+      </Fragment>
+    );
+  }
+}
 
 GenresList.propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired
+        id: PropTypes.string,
+        title: PropTypes.string,
+        genre: PropTypes.string,
+        releaseDate: PropTypes.number,
+        image: PropTypes.string,
+        poster: PropTypes.string,
+        background: PropTypes.string,
+        video: PropTypes.string,
+        runtime: PropTypes.string,
+        rating: PropTypes.number,
+        votes: PropTypes.number,
+        director: PropTypes.string,
+        description: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        reviews: PropTypes.array,
       })
-  ).isRequired,
+  ),
+
+  onGenreElementClick: PropTypes.func.isRequired,
+  onItemEnter: PropTypes.func.isRequired,
   selectedGenre: PropTypes.string.isRequired,
-  onGenreSelect: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.movies,
-  selectedGenre: state.selectedGenre
+  movies: getMovies(state),
+  selectedGenre: getSelectedGenre(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onGenreSelect(genre) {
-    dispatch(ActionCreator.changeGenre(genre));
-    dispatch(ActionCreator.getMoviesByGenre());
-    dispatch(ActionCreator.resetShowMoreMovies());
-  }
+  onGenreElementClick: (genre) => {
+    dispatch(ActionCreator.setGenre(genre));
+    dispatch(ActionCreator.changeMoviesCount(DEFAULT_MOVIE_COUNT));
+    dispatch(ActionCreator.getMoviesByGenre(genre));
+  },
 });
 
+export {GenresList};
 export default connect(mapStateToProps, mapDispatchToProps)(GenresList);
+

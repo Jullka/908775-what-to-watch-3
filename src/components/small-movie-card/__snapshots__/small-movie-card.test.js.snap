@@ -3,26 +3,19 @@
 exports[`SmallMovieCard component renders correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onClick={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
-  <div
-    className="small-movie-card__image"
-  >
-    <video
-      width="100%"
-    />
-  </div>
+  <video
+    height="175"
+    width="250"
+  />
   <h3
     className="small-movie-card__title"
   >
     <a
       className="small-movie-card__link"
       href="movie-page.html"
-      onClick={[Function]}
     >
-      The Grand Budapest Hotel
+      Mock-test-The Grand Budapest Hotel
     </a>
   </h3>
 </article>

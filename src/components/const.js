@@ -1,7 +1,18 @@
-const GameScreen = {
-  MAIN: `main`,
-  MOVIE_DETAILS: `movie_details`,
-  VIDEO_PLAYER: `video_player`
+const ErrorCode = {
+  UNAUTHORIZED: 401,
 };
 
-export {GameScreen};
+const AuthorizationStatus = {
+  NO_AUTH: `NO_AUTH`,
+  AUTH: `AUTH`
+};
+
+const AppRoute = {
+  SIGN_IN: `/login`,
+  MAIN: `/`,
+  PLAYER: `/player/:id`,
+  FILM: `/films/:id`,
+  MY_LIST: `/mylist`
+};
+
+export {ErrorCode, AuthorizationStatus, AppRoute};
