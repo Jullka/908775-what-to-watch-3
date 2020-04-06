@@ -10,16 +10,15 @@ class MoviesList extends React.PureComponent {
   }
 
   render() {
-    const {movies, moviesCount, onItemEnter, onItemLeave} = this.props;
+    const {movies, moviesCount, onItemEnter, onItemLeave, onMovieCardClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
         {movies.slice(0, moviesCount).map((movie) => (
           <SmallMovieCard
+            film={movie}
             key={movie.id}
-            title={movie.title}
-            image={movie.image}
-            video={movie.video}
+            onMovieCardClick={onMovieCardClick}
             onMovieHover={onItemEnter}
             onMovieLeave={onItemLeave}
           />
@@ -59,8 +58,7 @@ MoviesList.propTypes = {
       })),
 
   moviesCount: PropTypes.number.isRequired,
-
-  onMovieHover: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func,
   onItemEnter: PropTypes.func.isRequired,
   onItemLeave: PropTypes.func.isRequired,
 };

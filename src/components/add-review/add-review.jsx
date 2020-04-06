@@ -101,7 +101,7 @@ class AddReview extends PureComponent {
                     />
                   </div>
                 </div>) : (
-                  <div className="user-block"><Link to="/auth-dev">Sign In</Link></div>
+                  <div className="user-block"><Link to="/login">Sign In</Link></div>
                 )
             }
 

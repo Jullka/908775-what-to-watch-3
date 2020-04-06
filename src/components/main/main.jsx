@@ -19,7 +19,7 @@ class Main extends PureComponent {
   }
 
   render() {
-    const {film, onMouseClick, onMovieHover, activeItem, onItemEnter, onItemLeave, authorizationStatus, user, onMovieFavoriteStatusClick} = this.props;
+    const {film, onMovieCardClick, activeItem, onItemEnter, onItemLeave, authorizationStatus, user, onMovieFavoriteStatusClick} = this.props;
     const {title, genre, releaseDate, background, poster} = film;
 
     return (
@@ -61,14 +61,12 @@ class Main extends PureComponent {
             <div className="movie-card__wrap">
               <div className="movie-card__info">
                 <div
-                  onClick={onMouseClick}
                   className="movie-card__poster">
                   <img src={poster} alt={title} width="218" height="327" />
                 </div>
 
                 <div className="movie-card__desc">
                   <h2
-                    onClick={onMouseClick}
                     className="movie-card__title">{title}</h2>
                   <p className="movie-card__meta">
                     <span className="movie-card__genre">{genre}</span>
@@ -87,22 +85,38 @@ class Main extends PureComponent {
                       </svg>
                       <span>Play</span>
                     </button>
-                    <button
-                      className="btn btn--list movie-card__button"
-                      type="button"
-                      onClick={() => {
-                        onMovieFavoriteStatusClick(film.id, +!film.favorite);
-                      }}>
-                      {film.favorite ?
-                        <svg viewBox="0 0 19 20" width="19" height="20">
-                          <use xlinkHref="#add"></use>
-                        </svg> :
-                        <svg viewBox="0 0 18 14" width="18" height="14">
-                          <use xlinkHref="#in-list"></use>
-                        </svg>
-                      }
-                      <span>My list</span>
-                    </button>
+                    {authorizationStatus === AuthorizationStatus.AUTH ?
+                      <>
+                        <button
+                          className="btn btn--list movie-card__button"
+                          type="button"
+                          onClick={() => {
+                            onMovieFavoriteStatusClick(film.id, +!film.favorite);
+                          }}
+                        >
+                          {!film.favorite ?
+                            <svg viewBox="0 0 19 20" width="19" height="20">
+                              <use xlinkHref="#add"></use>
+                            </svg> :
+                            <svg viewBox="0 0 18 14" width="18" height="14">
+                              <use xlinkHref="#in-list"></use>
+                            </svg>
+                          }
+                          <span>My list</span>
+                        </button>
+                      </> :
+                      <>
+                        <Link
+                          to="/login"
+                          className="btn btn--list movie-card__button"
+                          type="button">
+                          <svg viewBox="0 0 19 20" width="19" height="20">
+                            <use xlinkHref="#add"></use>
+                          </svg>
+                          <span>My list</span>
+                        </Link>
+                      </>
+                    }
                   </div>
                 </div>
               </div>
@@ -115,7 +129,7 @@ class Main extends PureComponent {
               <GenresListWrapperd />
 
               <MoviesListWrapped
-                onMovieHover={onMovieHover}
+                onMovieCardClick={onMovieCardClick}
               />
 
               <ShowMore />
@@ -173,8 +187,7 @@ Main.propTypes = {
         })
     ),
   }),
-  onMouseClick: PropTypes.func.isRequired,
-  onMovieHover: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
   onItemEnter: PropTypes.func.isRequired,
   onItemLeave: PropTypes.func.isRequired,
   activeItem: PropTypes.any,
