@@ -2,8 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from "prop-types";
 import validator from "email-validator";
 
-const withErrorsItem = (Component) => {
-  class WithErrorsItem extends PureComponent {
+const withErrorItem = (Component) => {
+  class WithErrorItem extends PureComponent {
 
     constructor(props) {
       super(props);
@@ -52,11 +52,11 @@ const withErrorsItem = (Component) => {
     }
   }
 
-  WithErrorsItem.propTypes = {
+  WithErrorItem.propTypes = {
     onSubmit: PropTypes.func.isRequired,
   };
 
-  return WithErrorsItem;
+  return WithErrorItem;
 };
 
-export default withErrorsItem;
+export default withErrorItem;

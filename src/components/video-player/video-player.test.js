@@ -9,8 +9,8 @@ it(`VideoPlayer is rendered correctly`, () => {
    .create(<VideoPlayer
      key={promoFilm.id}
      isPlaying={false}
-     poster={promoFilm.imgSrc}
-     src={promoFilm.src}
+     poster={promoFilm.img}
+     src={promoFilm.video}
    >
      children=testIntance.children
    </VideoPlayer>, {

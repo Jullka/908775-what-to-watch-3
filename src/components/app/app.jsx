@@ -11,12 +11,12 @@ import {Operation as UserOperation} from '../../reducer/user/user.js';
 import {Operation as CommentsOperation} from '../../reducer/review/review.js';
 import SignIn from '../sign-in/sign-in.jsx';
 import AddReview from '../add-review/add-review.jsx';
-import withErrorsItem from '../hocs/with-error-items/with-error-items.jsx';
+import withErrorItem from '../hocs/with-error-item/with-error-item.jsx';
 import {AuthorizationStatus} from '../const.js';
 
 const MoviePageWrapped = withActiveItem(MoviePage);
 const MainWrapped = withActiveItem(Main);
-const SignInWrapped = withErrorsItem(SignIn);
+const SignInWrapped = withErrorItem(SignIn);
 
 const movieHoverHandler = () => {};
 
