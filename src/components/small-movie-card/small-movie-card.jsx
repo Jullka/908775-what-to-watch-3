@@ -1,55 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VideoPlayer from '../video-player/video-player.jsx';
+import withVideo from '../hocs/with-video/with-video.jsx';
 
-const VIDEO_PLAY_DELAY = 1000;
+const VideoPlayerWrapped = withVideo(VideoPlayer);
 
 const SmallMovieCard = (props) => {
-  const {movie, onClick, isActive, onActiveChange, setTimeout, clearTimeout} = props;
-  const {title, poster, video} = movie;
-
-  const _handleMouseEnter = () => setTimeout(() => onActiveChange(true), VIDEO_PLAY_DELAY);
-  const _handleMouseLeave = () => {
-    clearTimeout();
-    onActiveChange(false);
-  };
+  const {title, image, video} = props;
 
   return (
-    <article
-      className="small-movie-card catalog__movies-card"
-      onClick={() => onClick(movie)}
-      onMouseEnter={() => _handleMouseEnter()}
-      onMouseLeave={() => _handleMouseLeave()}
-    >
-      <VideoPlayer
-        video={video}
-        poster={poster}
-        isPlaying={isActive}
+    <article className="small-movie-card catalog__movies-card">
+      <VideoPlayerWrapped
+        isPlaying={false}
+        poster={image}
+        src={video}
       />
       <h3 className="small-movie-card__title">
-        <a
-          className="small-movie-card__link"
-          href="movie-page.html"
-          onClick={(evt) => evt.preventDefault()}
-        >
-          {title}
-        </a>
+        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
       </h3>
     </article>
   );
 };
 
 SmallMovieCard.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    video: PropTypes.string.isRequired
-  }).isRequired,
-  onClick: PropTypes.func.isRequired,
-  isActive: PropTypes.bool.isRequired,
-  onActiveChange: PropTypes.func.isRequired,
-  setTimeout: PropTypes.func.isRequired,
-  clearTimeout: PropTypes.func.isRequired
+  title: PropTypes.string,
+  image: PropTypes.string,
+  video: PropTypes.string,
 };
 
-export {SmallMovieCard};
+export default SmallMovieCard;

@@ -1,111 +1,147 @@
 import {extend} from '../../utils.js';
-import Movie from './adapter/movie.js';
-import {AppState} from '../../components/const.js';
-import {handleError} from '../utils.js';
+import adapter from './adapter.js';
+import {commentsAdapter} from "./adapter.js";
 
+const MOVIES_COUNT = 8;
 const ALL_GENRES = `All genres`;
-const SHOWN_MOVIES_NUMBER = 8;
 
 const initialState = {
+  movie: {},
   movies: [],
-  movieDetails: null,
-  appState: AppState.PENDING,
   selectedGenre: ALL_GENRES,
-  shownMoviesNumber: SHOWN_MOVIES_NUMBER
+  moviesByGenre: [],
+  showedMovies: [],
+  moviesCount: MOVIES_COUNT
 };
 
 const ActionType = {
-  CHANGE_APP_STATE: `CHANGE_APP_STATE`,
-  CHANGE_GENRE: `CHANGE_GENRE`,
+  SET_GENRE: `SET_GENRE`,
+  GET_MOVIES_BY_GENRE: `GET_MOVIES_BY_GENRE`,
   SHOW_MORE_MOVIES: `SHOW_MORE_MOVIES`,
-  RESET_SHOW_MORE_MOVIES: `RESET_SHOW_MORE_MOVIES`,
+  CHANGE_MOVIES_COUNT: `CHANGE_MOVIES_COUNT`,
   LOAD_MOVIES: `LOAD_MOVIES`,
-  LOAD_MOVIE_DETAILS: `LOAD_MOVIE_DETAILS`
+  LOAD_MOVIE_DETAILS: `LOAD_MOVIE_DETAILS`,
 };
 
 const ActionCreator = {
-  changeGenre: (genre) => ({
-    type: ActionType.CHANGE_GENRE,
-    payload: genre
+  setGenre: (genre) => ({
+    type: ActionType.SET_GENRE,
+    payload: genre,
   }),
+
+  getMoviesByGenre: (genre) => ({
+    type: ActionType.GET_MOVIES_BY_GENRE,
+    payload: genre,
+  }),
+
   showMoreMovies: () => ({
     type: ActionType.SHOW_MORE_MOVIES,
-    payload: SHOWN_MOVIES_NUMBER
+    payload: MOVIES_COUNT,
   }),
-  resetShowMoreMovies: () => ({
-    type: ActionType.RESET_SHOW_MORE_MOVIES
-  }),
-  changeAppState: (appState) => ({
-    type: ActionType.CHANGE_APP_STATE,
-    payload: appState
-  }),
-  loadMovies(movies) {
+
+  changeMoviesCount: (movieCount) => {
+    return {
+      type: ActionType.CHANGE_MOVIES_COUNT,
+      payload: movieCount,
+    };
+  },
+
+  loadMovies: (movies) => {
     return {
       type: ActionType.LOAD_MOVIES,
       payload: movies,
     };
   },
-  loadMovieDetails(movie) {
+
+  loadMovieDetails: (movie) => {
     return {
       type: ActionType.LOAD_MOVIE_DETAILS,
       payload: movie,
     };
-  }
+  },
+};
+
+const loadComments = (item) => (dispatch, getState, api) => {
+  return api.get(`/comments/${item.id}`)
+    .then((response) => {
+      item.reviews = response.data.map((review) => commentsAdapter(review));
+    });
 };
 
 const Operation = {
   loadMovies: () => (dispatch, getState, api) => {
-    return api.loadMovies()
-    .then(Movie.parseMovies)
-    .then((movies) => Promise.all(
-        movies.map((movie) => api
-          .loadComments(movie.id)
-          .then(Comment.parseComments)
-          .then((comments) => movie.setComments(comments))
-        )
-    ))
-    .then((movies) => dispatch(ActionCreator.loadMovies(movies)))
-    .then(() => api.loadMovieDetails())
-    .then((data) => dispatch(ActionCreator.loadMovieDetails(Movie.parseMovie(data))))
-    .then(() => dispatch(ActionCreator.changeAppState(AppState.READY)))
-    .catch((err) => dispatch(handleError(err)));
+    return api.get(`/films`)
+      .then((response) => {
+        const adaptedData = response.data.map((item) => {
+          const adaptedItem = adapter(item);
+          dispatch(loadComments(adaptedItem));
+          return adaptedItem;
+        });
+        dispatch(ActionCreator.loadMovies(adaptedData));
+      });
+  },
+  loadMovieDetails: () => (dispatch, getState, api) => {
+    return api.get(`/films/promo`)
+      .then((response) => {
+        return adapter(response.data);
+      })
+      .then((movie) => {
+        dispatch(loadComments(movie));
+        return movie;
+      })
+      .then((movie) => {
+        dispatch(ActionCreator.loadMovieDetails(movie));
+      });
   },
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.LOAD_MOVIES:
+    case ActionType.SET_GENRE:
       return extend(state, {
-        movies: action.payload,
-      });
-    case ActionType.LOAD_MOVIE_DETAILS:
-      return extend(state, {
-        movieDetails: action.payload,
-      });
-    case ActionType.CHANGE_APP_STATE:
-      return extend(state, {
-        appState: action.payload
+        selectedGenre: action.payload,
       });
 
-    case ActionType.CHANGE_GENRE:
+    case ActionType.GET_MOVIES_BY_GENRE:
+      const {movies} = state;
+      const genre = action.payload;
+
+      if (genre === `All genres`) {
+        return extend(state, {
+          moviesByGenre: movies
+        });
+      }
+
       return extend(state, {
-        selectedGenre: action.payload
+        moviesByGenre: movies.filter((movie) => movie.genre === genre),
       });
 
     case ActionType.SHOW_MORE_MOVIES:
+      const moviesCount = state.moviesCount + action.payload;
       return extend(state, {
-        shownMoviesNumber: state.shownMoviesNumber + action.payload
+        moviesCount,
+        showedMovies: state.moviesByGenre.slice(0, moviesCount),
       });
 
-    case ActionType.RESET_SHOW_MORE_MOVIES:
+    case ActionType.CHANGE_MOVIES_COUNT:
       return extend(state, {
-        shownMoviesNumber: SHOWN_MOVIES_NUMBER
+        moviesCount: action.payload,
       });
 
-    default:
-      return state;
+    case ActionType.LOAD_MOVIES:
+      return extend(state, {
+        movies: action.payload,
+        moviesByGenre: action.payload,
+        showedMovies: action.payload.slice(0, state.moviesCount),
+      });
+
+    case ActionType.LOAD_MOVIE_DETAILS:
+      return extend(state, {
+        movie: action.payload,
+      });
   }
+
+  return state;
 };
 
-export {reducer, ActionType, Operation};
-export default ActionCreator;
+export {reducer, ActionType, ActionCreator, Operation};

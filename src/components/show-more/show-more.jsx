@@ -1,33 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import ActionCreator from '../../reducer/action-creator.js';
-// import {} from '../../reducer/app/selectors.js';
-import {getMoviesByGenre, getShownMoviesNumber} from '../../reducer/data/selectors.js';
+import {ActionCreator} from '../../reducer/data/data.js';
+import {getMoviesByGenre, getMoviesCount} from '../../reducer/data/selectors.js';
 
 const ShowMore = (props) => {
-  const {onClick, isVisible} = props;
-  return (
+  const {moviesByGenre, moviesCount, onShowMoreButtonClick} = props;
+  return moviesByGenre.length > moviesCount ?
     <div className="catalog__more">
-      {
-        isVisible &&
-        <button className="catalog__button" type="button" onClick={onClick}>Show more</button>
-      }
-    </div>
-  );
+      <button className="catalog__button"
+        type="button"
+        onClick={
+          (event) => {
+            event.preventDefault();
+            onShowMoreButtonClick();
+          }
+        }>Show more</button>
+    </div> : null;
 };
 
 ShowMore.propTypes = {
-  isVisible: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired
+  moviesByGenre: PropTypes.array,
+  moviesCount: PropTypes.number,
+
+  onShowMoreButtonClick: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
-  isVisible: getMoviesByGenre(state).length > getShownMoviesNumber(state)
+  moviesByGenre: getMoviesByGenre(state),
+  moviesCount: getMoviesCount(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onClick() {
+  onShowMoreButtonClick: () => {
     dispatch(ActionCreator.showMoreMovies());
   }
 });

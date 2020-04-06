@@ -3,9 +3,16 @@
 exports[`VideoPlayerFull should render correctly 1`] = `
 <div
   className="player"
+  style={
+    Object {
+      "zIndex": 10,
+    }
+  }
 >
   <video
+    autoPlay={true}
     className="player__video"
+    poster="img/johnny-english.jpg"
   />
   <button
     className="player__exit"
@@ -26,12 +33,13 @@ exports[`VideoPlayerFull should render correctly 1`] = `
         <progress
           className="player__progress"
           max="100"
+          value={0}
         />
         <div
           className="player__toggler"
           style={
             Object {
-              "left": "undefined%",
+              "left": "0%",
             }
           }
         >
@@ -40,13 +48,16 @@ exports[`VideoPlayerFull should render correctly 1`] = `
       </div>
       <div
         className="player__time-value"
-      />
+      >
+        0:00:0
+      </div>
     </div>
     <div
       className="player__controls-row"
     >
       <button
         className="player__play"
+        onClick={[Function]}
         type="button"
       >
         <svg
@@ -65,10 +76,11 @@ exports[`VideoPlayerFull should render correctly 1`] = `
       <div
         className="player__name"
       >
-        Avengers: Infinity War
+        Terminator 2: Judgment Day
       </div>
       <button
         className="player__full-screen"
+        onClick={[Function]}
         type="button"
       >
         <svg

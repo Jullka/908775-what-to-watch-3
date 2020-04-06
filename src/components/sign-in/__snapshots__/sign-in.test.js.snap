@@ -12,8 +12,7 @@ exports[`SignIn should render correctly 1`] = `
     >
       <a
         className="logo__link"
-        href="/"
-        onClick={[Function]}
+        href="main.html"
       >
         <span
           className="logo__letter logo__letter--1"
@@ -42,10 +41,13 @@ exports[`SignIn should render correctly 1`] = `
     className="sign-in user-page__content"
   >
     <form
-      action="#"
+      action=""
       className="sign-in__form"
       onSubmit={[Function]}
     >
+      <div
+        className="sign-in__message"
+      />
       <div
         className="sign-in__fields"
       >

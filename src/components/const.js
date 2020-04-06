@@ -1,19 +1,5 @@
-const AppState = {
-  PENDING: `pending`,
-  ERROR: `error`,
-  READY: `ready`
-};
-
-const MovieScore = {
-  BAD: `Bad`,
-  NORMAL: `Normal`,
-  GOOD: `Good`,
-  VERY_GOOD: `Very good`,
-  AWESOME: `Awesome`
-};
-
 const ErrorCode = {
-  UNAUTHORIZED: 401
+  UNAUTHORIZED: 401,
 };
 
 const AuthorizationStatus = {
@@ -29,4 +15,4 @@ const AppRoute = {
   MY_LIST: `/mylist`
 };
 
-export {AppState, MovieScore, ErrorCode, AuthorizationStatus, AppRoute};
+export {ErrorCode, AuthorizationStatus, AppRoute};

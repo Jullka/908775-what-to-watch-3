@@ -1,30 +1,28 @@
 import {extend} from '../../utils.js';
-import User from '../data/adapter/user.js';
 import {AuthorizationStatus} from '../../components/const.js';
-import {handleError} from '../utils.js';
-import {AppRoute} from '../../components/const.js';
-import {history} from '../../routes/history.js';
+
+const SERVER_URL = `https://htmlacademy-react-3.appspot.com/`;
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  user: null
+  user: ``,
 };
 
 const ActionType = {
-  SET_AUTHORIZATION_STATUS: `SET_AUTHORIZATION_STATUS`,
-  SET_USER: `SET_USER`
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  SET_AVATAR_URL: `SET_AVATAR_URL`,
 };
 
 const ActionCreator = {
-  setAuthorizationStatus: (status) => {
+  requireAuthorization: (status) => {
     return {
-      type: ActionType.SET_AUTHORIZATION_STATUS,
-      payload: status
+      type: ActionType.REQUIRED_AUTHORIZATION,
+      payload: status,
     };
   },
   setUser: (user) => {
     return {
-      type: ActionType.SET_USER,
+      type: ActionType.SET_AVATAR_URL,
       payload: user
     };
   },
@@ -32,41 +30,48 @@ const ActionCreator = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.SET_AUTHORIZATION_STATUS:
+    case ActionType.REQUIRED_AUTHORIZATION:
       return extend(state, {
         authorizationStatus: action.payload
       });
-    case ActionType.SET_USER:
+    case ActionType.SET_AVATAR_URL:
       return extend(state, {
-        user: action.payload
+        user: `${SERVER_URL}${action.payload}`
       });
-    default:
-      return state;
   }
+
+  return state;
 };
 
 const Operation = {
-  checkAuthStatus: () => (dispatch, getState, api) => {
-    return api.checkAuthorizationStatus()
-    .then(User.parseUser)
-    .then((user) => {
-      dispatch(ActionCreator.setAuthorizationStatus(AuthorizationStatus.AUTH));
-      dispatch(ActionCreator.setUser(user));
-    })
-    .catch((err) => dispatch(handleError(err)));
+  checkAuth: () => (dispatch, getState, api) => {
+    return api.get(`/login`)
+      .then((response) => {
+        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.setUser(response.data.avatar_url));
+      })
+      .catch((err) => {
+        throw err;
+      });
   },
 
   login: (authData) => (dispatch, getState, api) => {
-    return api.login(authData)
-    .then(User.parseUser)
-    .then((user) => {
-      dispatch(ActionCreator.setAuthorizationStatus(AuthorizationStatus.AUTH));
-      dispatch(ActionCreator.setUser(user));
-      history.push(AppRoute.MAIN);
-    })
-    .catch((err) => dispatch(handleError(err)));
+    return api
+      .post(`/login`, {
+        email: authData.login,
+        password: authData.password
+      })
+      .then((response) => {
+        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.setUser(response.data.avatar_url));
+      })
+      .catch((err) => {
+        throw err;
+      });
   }
 };
 
-export {ActionType, Operation, reducer};
-export default ActionCreator;
+
+export {ActionCreator, ActionType, AuthorizationStatus,
+  Operation, reducer,
+};

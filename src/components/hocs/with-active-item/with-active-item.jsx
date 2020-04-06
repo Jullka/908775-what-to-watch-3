@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent} from "react";
 
 const withActiveItem = (Component) => {
   class WithActiveItem extends PureComponent {
@@ -6,14 +6,21 @@ const withActiveItem = (Component) => {
       super(props);
 
       this.state = {
-        activeItem: 0
+        activeItem: ``,
       };
-      this._handleActiveItemChange = this._handleActiveItemChange.bind(this);
+      this.onItemEnter = this.onItemEnter.bind(this);
+      this.onItemLeave = this.onItemLeave.bind(this);
     }
 
-    _handleActiveItemChange(activeItem) {
+    onItemEnter(item) {
       this.setState({
-        activeItem
+        activeItem: item
+      });
+    }
+
+    onItemLeave() {
+      this.setState({
+        activeItem: null
       });
     }
 
@@ -22,7 +29,8 @@ const withActiveItem = (Component) => {
         <Component
           {...this.props}
           activeItem={this.state.activeItem}
-          onActiveItemChange={this._handleActiveItemChange}
+          onItemEnter={this.onItemEnter}
+          onItemLeave={this.onItemLeave}
         />
       );
     }
