@@ -110,7 +110,7 @@ class Tabs extends PureComponent {
           <div className="movie-rating__score">{film.rating}</div>
           <p className="movie-rating__meta">
             <span className="movie-rating__level">{level}</span>
-            <span className="movie-rating__count">{film.votes} ratings</span>
+            <span className="movie-rating__count">{film.score} ratings</span>
           </p>
         </div>
 
@@ -180,7 +180,7 @@ Tabs.propTypes = {
     video: PropTypes.string,
     runtime: PropTypes.string,
     rating: PropTypes.number,
-    votes: PropTypes.number,
+    score: PropTypes.number,
     director: PropTypes.string,
     description: PropTypes.string,
     starring: PropTypes.arrayOf(PropTypes.string),

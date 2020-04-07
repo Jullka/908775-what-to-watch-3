@@ -9,6 +9,9 @@ import {Operation as UserOperation, ActionCreator} from './reducer/user/user.js'
 import {AuthorizationStatus} from './components/const.js';
 import createAPI from './api/api.js';
 import thunk from 'redux-thunk';
+import withActiveItem from './components/hocs/with-active-item/with-active-item.jsx';
+
+const AppWrapped = withActiveItem(App);
 
 const onUnauthorized = () => {
   store.dispatch(
@@ -31,7 +34,7 @@ store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <AppWrapped />
     </Provider>,
     document.querySelector(`#root`)
 );

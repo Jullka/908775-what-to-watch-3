@@ -39,6 +39,7 @@ it(`MoviePage renders correctly`, () => {
             onMovieHover={() => { }}
             onItemEnter={() => { }}
             onItemLeave={() => { }}
+            onMovieFavoriteStatusClick={() => { }}
           />
         </Provider>,
         {
