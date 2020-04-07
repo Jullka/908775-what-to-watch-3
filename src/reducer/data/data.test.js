@@ -13,6 +13,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
     movies: [],
     showedMovies: [],
     moviesCount: SHOWN_MOVIES_NUMBER,
+    myMoviesList: null
   });
 });
 

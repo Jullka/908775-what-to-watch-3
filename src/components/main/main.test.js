@@ -35,6 +35,7 @@ it(`Main should render correctly`, () => {
               authorizationStatus={AuthorizationStatus.NO_AUTH}
               user=""
               film={filmDetails}
+              onMovieCardClick={() => {}}
               onMouseClick={() => {}}
               onMovieHover={() => {}}
               onItemEnter={() => { }}

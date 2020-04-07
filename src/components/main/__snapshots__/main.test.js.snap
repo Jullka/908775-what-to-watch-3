@@ -66,7 +66,6 @@ exports[`Main should render correctly 1`] = `
       >
         <div
           className="movie-card__poster"
-          onClick={[Function]}
         >
           <img
             alt="Terminator 2: Judgment Day"
@@ -80,7 +79,6 @@ exports[`Main should render correctly 1`] = `
         >
           <h2
             className="movie-card__title"
-            onClick={[Function]}
           >
             Terminator 2: Judgment Day
           </h2>
@@ -117,24 +115,25 @@ exports[`Main should render correctly 1`] = `
                 Play
               </span>
             </button>
-            <button
+            <a
               className="btn btn--list movie-card__button"
+              href="/login"
               onClick={[Function]}
               type="button"
             >
               <svg
-                height="14"
-                viewBox="0 0 18 14"
-                width="18"
+                height="20"
+                viewBox="0 0 19 20"
+                width="19"
               >
                 <use
-                  xlinkHref="#in-list"
+                  xlinkHref="#add"
                 />
               </svg>
               <span>
                 My list
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -182,6 +181,7 @@ exports[`Main should render correctly 1`] = `
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -192,7 +192,8 @@ exports[`Main should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/001"
+              onClick={[Function]}
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -200,6 +201,7 @@ exports[`Main should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -210,7 +212,8 @@ exports[`Main should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/002"
+              onClick={[Function]}
             >
               Bohemian Rhapsody
             </a>
@@ -218,6 +221,7 @@ exports[`Main should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -228,7 +232,8 @@ exports[`Main should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/003"
+              onClick={[Function]}
             >
               Macbeth
             </a>
@@ -236,6 +241,7 @@ exports[`Main should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -246,7 +252,8 @@ exports[`Main should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/004"
+              onClick={[Function]}
             >
               Aviator
             </a>
@@ -254,6 +261,7 @@ exports[`Main should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -264,7 +272,8 @@ exports[`Main should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/005"
+              onClick={[Function]}
             >
               We need to talk about Kevin
             </a>
@@ -272,6 +281,7 @@ exports[`Main should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -282,7 +292,8 @@ exports[`Main should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/006"
+              onClick={[Function]}
             >
               What We Do in the Shadows
             </a>
@@ -290,6 +301,7 @@ exports[`Main should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -300,7 +312,8 @@ exports[`Main should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/007"
+              onClick={[Function]}
             >
               Revenant
             </a>
@@ -308,6 +321,7 @@ exports[`Main should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -318,7 +332,8 @@ exports[`Main should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/008"
+              onClick={[Function]}
             >
               Johnny English
             </a>

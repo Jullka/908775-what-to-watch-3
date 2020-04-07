@@ -7,7 +7,7 @@ import GenresList from '../genres-list/genres-list.jsx';
 import ShowMore from '../show-more/show-more.jsx';
 import VideoPlayerFull from '../video-player-full/video-player-full.jsx';
 import {AuthorizationStatus} from '../const.js';
-import {getAuthorizationStatus, getUser} from "../../reducer/user/selectors";
+import {getAuthorizationStatus, getUser} from "../../reducer/user/selectors.js";
 import withActiveItem from '../hocs/with-active-item/with-active-item.jsx';
 
 const MoviesListWrapped = withActiveItem(MoviesList);
@@ -44,16 +44,20 @@ class Main extends PureComponent {
               {
                 (authorizationStatus === AuthorizationStatus.AUTH) ?
                   (<div className="user-block">
-                    <div className="user-block__avatar">
-                      <img
-                        src={user}
-                        alt="User avatar"
-                        width="63"
-                        height="63"
-                      />
-                    </div>
+                    <Link to="/mylist">
+                      <div className="user-block__avatar">
+                        <img
+                          src={user}
+                          alt="User avatar"
+                          width="63"
+                          height="63"
+                        />
+                      </div>
+                    </Link>
                   </div>) : (
-                    <div className="user-block"><Link to="/login">Sign In</Link></div>
+                    <div className="user-block">
+                      <Link to="/login">Sign In</Link>
+                    </div>
                   )
               }
             </header>

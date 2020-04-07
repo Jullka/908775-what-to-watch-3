@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import MoviePage from '../movie-page/movie-page.jsx';
 import Main from '../main/main.jsx';
 import VideoPlayerFull from '../../components/video-player-full/video-player-full.jsx';
-// import MyList from '../my-list/my-list.jsx';
+import MyList from '../my-list/my-list.jsx';
 import PrivateRoute from '../private-route/private-route.jsx';
 import withActiveItem from '../hocs/with-active-item/with-active-item.jsx';
 import {getMovieDetails, getMoviesByGenre} from '../../reducer/data/selectors.js';
@@ -23,8 +23,7 @@ import history from '../../history.js';
 const MoviePageWrapped = withActiveItem(MoviePage);
 const MainWrapped = withActiveItem(Main);
 const SignInWrapped = withErrorItem(SignIn);
-
-// const MyListWrapped = withActiveItem(MyList);
+const MyListWrapped = withActiveItem(MyList);
 
 class App extends PureComponent {
   constructor(props) {
@@ -39,8 +38,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {movies, film, authorizationStatus, changeFavoriteStatus,
-      login, sendComment, onItemLeave} = this.props;
+    const {movies, film, authorizationStatus, changeFavoriteStatus, login, sendComment, onItemLeave} = this.props;
 
     return (
       <Router history={history}>
@@ -53,7 +51,7 @@ class App extends PureComponent {
               onMovieFavoriteStatusClick={changeFavoriteStatus}
             />
           </Route>
-          {/* <PrivateRoute
+          <PrivateRoute
             exact
             path="/mylist"
             render={() => {
@@ -66,18 +64,18 @@ class App extends PureComponent {
                 />
               );
             }}
-          /> */}
+          />
           <Route exact path="/login" render={(props) => {
             return (authorizationStatus === AuthorizationStatus.AUTH) ?
               props.history.goBack() :
               <SignInWrapped onSubmit={login} />;
           }} />
           <Route exact path="/films/:id" render={(props) => {
-            const chosenFilm = movies.find((item) => item.id === props.match.params.id);
-            return chosenFilm && (
+            const selectedMovie = movies.find((item) => item.id === props.match.params.id);
+            return selectedMovie && (
               <MoviePageWrapped
                 authorizationStatus={authorizationStatus}
-                film={chosenFilm}
+                film={selectedMovie}
                 movies={movies}
                 onMovieCardClick={this._onMovieClick}
                 onMovieFavoriteStatusClick={changeFavoriteStatus}
@@ -85,9 +83,9 @@ class App extends PureComponent {
             );
           }} />
           <Route exact path="/player/:id" render={(props) => {
-            const chosenFilm = movies.find((item) => item.id === props.match.params.id);
-            return chosenFilm && <VideoPlayerFull
-              film={chosenFilm}
+            const selectedMovie = movies.find((item) => item.id === props.match.params.id);
+            return selectedMovie && <VideoPlayerFull
+              film={selectedMovie}
               onItemLeaveHandler={onItemLeave}
             />;
           }} />
@@ -95,11 +93,11 @@ class App extends PureComponent {
             exact
             path="/films/:id/review"
             render={(props) => {
-              const chosenFilm = movies.find((item) => item.id === props.match.params.id);
-              return chosenFilm && (
+              const selectedMovie = movies.find((item) => item.id === props.match.params.id);
+              return selectedMovie && (
                 <AddReview
                   onSubmit={sendComment}
-                  film={chosenFilm}
+                  film={selectedMovie}
                 />
               );
             }}

@@ -1,5 +1,9 @@
 const ErrorCode = {
-  UNAUTHORIZED: 401,
+  UNAUTHORIZED: 401
+};
+
+const ResponseCode = {
+  OK: 200
 };
 
 const AuthorizationStatus = {
@@ -15,4 +19,4 @@ const AppRoute = {
   MY_LIST: `/mylist`
 };
 
-export {ErrorCode, AuthorizationStatus, AppRoute};
+export {ErrorCode, ResponseCode, AuthorizationStatus, AppRoute};

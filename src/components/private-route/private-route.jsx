@@ -2,41 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {AppRoute, AuthorizationStatus} from '../const.js';
+import {AuthorizationStatus} from '../const.js';
 import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
 
 
 const PrivateRoute = (props) => {
-  const {render, path, exact, isAuthenticated} = props;
+  const {render, path, exact, authorizationStatus} = props;
 
   return (
     <Route
       path={path}
       exact={exact}
-      render={() => {
-        return (
-          isAuthenticated
-            ? render()
-            : <Redirect to={AppRoute.SIGN_IN} />
-        );
+      render={ (routeProps) => {
+        if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+          routeProps.history.push(path);
+        }
+        return authorizationStatus === AuthorizationStatus.NO_AUTH ? <Redirect to="/login" /> : render(routeProps);
       }}
     />
   );
 };
 
 PrivateRoute.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   exact: PropTypes.bool.isRequired,
   path: PropTypes.string.isRequired,
   render: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: getAuthorizationStatus(state) === AuthorizationStatus.AUTH,
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
-const mapDispatchToProps = () => ({
-});
 
 export {PrivateRoute};
-export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute);
+export default connect(mapStateToProps)(PrivateRoute);

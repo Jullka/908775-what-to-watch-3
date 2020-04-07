@@ -3,6 +3,7 @@
 exports[`SmallMovieCard component renders correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onClick={[Function]}
 >
   <video
     height="175"
@@ -13,9 +14,10 @@ exports[`SmallMovieCard component renders correctly 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="/films/044"
+      onClick={[Function]}
     >
-      Mock-test-The Grand Budapest Hotel
+      Terminator 2: Judgment Day
     </a>
   </h3>
 </article>

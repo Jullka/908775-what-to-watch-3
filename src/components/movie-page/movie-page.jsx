@@ -61,7 +61,9 @@ class MoviePage extends PureComponent {
                       </div>
                     </Link>
                   </div>) : (
-                    <div className="user-block"><Link to="/login">Sign In</Link></div>
+                    <div className="user-block">
+                      <Link to="/login">Sign In</Link>
+                    </div>
                   )
               }
             </header>
@@ -112,8 +114,7 @@ class MoviePage extends PureComponent {
                       <Link
                         to="/login"
                         className="btn btn--list movie-card__button"
-                        type="button"
-                      >
+                        type="button">
                         <svg viewBox="0 0 19 20" width="19" height="20">
                           <use xlinkHref="#add"></use>
                         </svg>

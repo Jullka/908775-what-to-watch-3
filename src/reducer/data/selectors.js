@@ -25,3 +25,9 @@ export const getShowedMovies = (state) => {
 export const getMoviesCount = (state) => {
   return state[NAME_SPACE].moviesCount;
 };
+
+export const getMyMoviesList = (state) => {
+  return state[NAME_SPACE].myListMovies;
+};
+
+

@@ -181,7 +181,6 @@ class AddReview extends PureComponent {
 AddReview.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
-
   changeRating: PropTypes.func.isRequired,
   changeSendStatusText: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
@@ -190,7 +189,6 @@ AddReview.propTypes = {
   textValue: PropTypes.string.isRequired,
   sendStatusValue: PropTypes.string.isRequired,
   formBlock: PropTypes.bool.isRequired,
-
   film: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
@@ -213,7 +211,6 @@ AddReview.propTypes = {
             id: PropTypes.number,
             name: PropTypes.string,
           }).isRequired,
-
           date: PropTypes.string,
           rating: PropTypes.number,
         })

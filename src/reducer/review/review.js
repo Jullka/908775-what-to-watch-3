@@ -22,7 +22,7 @@ const ActionCreator = {
     payload: text,
   }),
   changeSendStatusText: (text) => ({
-    type: ActionType.c_SEND_STATUS_TEXT,
+    type: ActionType.CHANGE_SEND_STATUS_TEXT,
     payload: text,
   }),
   changeBlockForm: (status) => ({
